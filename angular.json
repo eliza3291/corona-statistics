@@ -31,6 +31,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/styles/fonts/nunito-sans/css/nunito-sans-font.css",
               "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
               "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
               "src/styles.scss"
