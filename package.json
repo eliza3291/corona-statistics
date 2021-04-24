@@ -16,7 +16,9 @@
     "postbuild:production:analyze":"npm run analyze",
     "build:production:compress": "npx ng build --base-href=/ --prod --build-optimizer --delete-output-path --aot",
     "postbuild:production:compress": "npm run minify-html && npm run gzipper && npm run brotli",
-    "compodoc": "npx compodoc -p tsconfig.doc.json -s"
+    "compodoc": "npx compodoc -p tsconfig.doc.json -s",
+    "prettier:check":"npx prettier --config ./.prettierrc --list-different \"src/{app,environments}/**/*{.ts,.html,.scss}\"",
+    "prettier":"npx prettier --config ./.prettierrc --write \"src/{app,environments}/**/*{.ts,.html,.scss}\""
   },
   "private": true,
   "dependencies": {
@@ -49,6 +51,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "prettier": "^2.2.1",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
