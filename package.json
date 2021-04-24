@@ -8,17 +8,17 @@
     "test": "npx ng test",
     "lint": "npx ng lint",
     "e2e": "npx ng e2e",
-    "analyze":"webpack-bundle-analyzer dist/corona-statistics/stats.json",
+    "analyze": "webpack-bundle-analyzer dist/corona-statistics/stats.json",
     "gzipper": "npx gzipper compress --include scss,js,html,json,ico,svg ./dist/corona-statistics",
     "brotli": "npx gzipper compress --brotli --include scss,js,html,json,ico,svg ./dist/corona-statistics",
     "minify-html": "npx html-minifier dist/corona-statistics/index.html --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true -o dist/corona-statistics/index.html",
-    "build:production:analyze":"npx ng build --prod --aot=true --build-optimizer=true --delete-output-path --vendor-chunk --common-chunk --stats-json",
-    "postbuild:production:analyze":"npm run analyze",
+    "build:production:analyze": "npx ng build --prod --aot=true --build-optimizer=true --delete-output-path --vendor-chunk --common-chunk --stats-json",
+    "postbuild:production:analyze": "npm run analyze",
     "build:production:compress": "npx ng build --base-href=/ --prod --build-optimizer --delete-output-path --aot",
     "postbuild:production:compress": "npm run minify-html && npm run gzipper && npm run brotli",
     "compodoc": "npx compodoc -p tsconfig.doc.json -s",
-    "prettier:check":"npx prettier --config ./.prettierrc --list-different \"src/{app,environments}/**/*{.ts,.html,.scss}\"",
-    "prettier":"npx prettier --config ./.prettierrc --write \"src/{app,environments}/**/*{.ts,.html,.scss}\""
+    "prettier:check": "npx prettier --config ./.prettierrc --list-different \"src/{app,environments}/**/*{.ts,.html,.scss}\"",
+    "prettier": "npx prettier --config ./.prettierrc --write \"src/{app,environments}/**/*{.ts,.html,.scss}\""
   },
   "private": true,
   "dependencies": {
