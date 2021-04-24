@@ -15,7 +15,8 @@
     "build:production:analyze":"npx ng build --prod --aot=true --build-optimizer=true --delete-output-path --vendor-chunk --common-chunk --stats-json",
     "postbuild:production:analyze":"npm run analyze",
     "build:production:compress": "npx ng build --base-href=/ --prod --build-optimizer --delete-output-path --aot",
-    "postbuild:production:compress": "npm run minify-html && npm run gzipper && npm run brotli"
+    "postbuild:production:compress": "npm run minify-html && npm run gzipper && npm run brotli",
+    "compodoc": "npx compodoc -p tsconfig.doc.json -s"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +36,7 @@
     "@angular-devkit/build-angular": "~0.1102.10",
     "@angular/cli": "~11.2.10",
     "@angular/compiler-cli": "~11.2.11",
+    "@compodoc/compodoc": "^1.1.11",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
