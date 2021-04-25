@@ -1,0 +1,105 @@
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div
+  id="main-wrapper"
+  [ngClass]="{ 'show-sidebar': showMobileMenu }"
+  dir="ltr"
+  data-theme="light"
+  data-layout="vertical"
+  [attr.data-sidebartype]="sidebartype"
+  data-sidebar-position="absolute"
+  data-header-position="fixed"
+  data-boxed-layout="full"
+>
+  <!-- ============================================================== -->
+  <!-- Topbar header - style you can find in topbar.scss -->
+  <!-- ============================================================== -->
+  <header class="topbar" data-navbarbg="skin6">
+    <nav class="d-flex top-navbar navbar-expand-md navbar-light">
+      <div class="navbar-header" [ngClass]="expandLogo ? 'expand-logo' : ''" [attr.data-logobg]="options.logobg">
+        <!-- This is for the sidebar toggle which is visible on mobile only -->
+        <a (click)="showMobileMenu = !showMobileMenu" class="nav-toggler d-block d-md-none" href="javascript:void(0)">
+          <i [ngClass]="showMobileMenu ? 'fas fa-times' : 'fas fa-bars'"></i>
+        </a>
+        <!-- ============================================================== -->
+        <!-- Logo -->
+        <!-- ============================================================== -->
+        <a class="navbar-brand mx-auto" href="/">
+          <!-- Logo icon -->
+          <b class="logo-icon">
+            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+            <!-- Light Logo icon -->
+            <img src="assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+          </b>
+          <!--End Logo icon -->
+          <!-- Logo text -->
+          <span class="logo-text">
+            <!-- Light Logo text -->
+            <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+          </span>
+        </a>
+        <!-- ============================================================== -->
+        <!-- End Logo -->
+        <!-- ============================================================== -->
+      </div>
+      <div class="navbar-collapse collapse" id="navbarSupportedContent" [attr.data-navbarbg]="options.navbarbg">
+        <ul class="navbar-nav float-left mr-auto w-100">
+          <li class="nav-item d-none d-md-block">
+            <a class="nav-link sidebartoggler" href="javascript:void(0)" (click)="toggleSidebarType()">
+              <i class="fas fa-bars font-24"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- ============================================================== -->
+  <!-- Left Sidebar - style you can find in sidebar.scss  -->
+  <!-- ============================================================== -->
+  <aside class="left-sidebar" [attr.data-sidebarbg]="options.sidebarbg" (mouseover)="Logo()" (mouseout)="Logo()">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+      <app-sidebar></app-sidebar>
+    </div>
+    <!-- End Sidebar scroll-->
+  </aside>
+  <!-- ============================================================== -->
+  <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Page wrapper  -->
+  <!-- ============================================================== -->
+  <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <app-breadcrumb></app-breadcrumb>
+    <div class="container-fluid">
+      <!-- ============================================================== -->
+      <!-- Start Page Content -->
+      <!-- ============================================================== -->
+      <router-outlet></router-outlet>
+      <!-- ============================================================== -->
+      <!-- End Start Page Content -->
+      <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer text-right">
+      <a href="#">
+        <p class="h3 mb-0"><i class="fab fa-github"></i></p>
+      </a>
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Page wrapper  -->
+  <!-- ============================================================== -->
+</div>
