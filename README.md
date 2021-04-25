@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Credits
+
+### Germany Map
+
+- Germany EU.svg: *ESC 2011 Potential host cities.svg: *Karte Deutschland.svg: David Liuzzo
+- derivative work: AxG
+- Flag of Europe.svg: User:Verdy p, User:-xfi-, User:Paddu, User:Nightstallion, User:Funakoshi, User:Jeltz, User:Dbenbenn, User:Zscout370
+- derivative work: Fry1989 22:00, 8 December 2010 (UTC)
+- Flag of Germany.svg:
+- derivative work: Fry1989 23:14, 25 January 2011 (UTC)
+
+### Xtreme Angular 11 Admin Lite
+
+Copyright © 2019 WrapPixel
