@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Path } from '@common';
 
 @Component({
   templateUrl: './germany-overview.component.html',
@@ -6,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class GermanyOverviewComponent {
   constructor() {}
+
+  onClick(state: Path) {
+    console.log('onClick', state);
+  }
 }

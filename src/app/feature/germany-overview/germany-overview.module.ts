@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { GermanyOverviewComponent } from './germany-overview.component';
 import { RouterModule, Routes } from '@angular/router';
+import { GermanyMapModule } from '@shared';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes), GermanyMapModule],
   declarations: [GermanyOverviewComponent]
 })
 export class GermanyOverviewModule {}
