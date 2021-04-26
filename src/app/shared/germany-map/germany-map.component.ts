@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Path } from '@common';
-import { PATHS } from '@common';
+import { STATES, State } from '@common';
 
 @Component({
   selector: 'app-germany-map',
@@ -11,22 +10,22 @@ export class GermanyMapComponent implements OnInit {
   @Input() height: string = '100%';
   @Input() width: string = '100%';
 
-  @Output() elementOnClick: EventEmitter<Path> = new EventEmitter<Path>();
+  @Output() elementOnClick: EventEmitter<State> = new EventEmitter<State>();
 
-  public svgPaths: Path[] = PATHS;
-  public pathSelected: Path = Object.create(null);
+  public svgPaths: State[] = STATES;
+  public pathSelected: State = Object.create(null);
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  onClick(event: any, state: Path = Object.create(null)) {
+  onClick(event: any, state: State = Object.create(null)) {
     event.stopPropagation();
-    this.elementOnClick.emit(state);
-    if (state) {
+    if (state.id) {
       this.pathSelected = this.pathSelected.id === state.id ? Object.create(null) : state;
     } else {
       this.pathSelected = Object.create(null);
     }
+    this.elementOnClick.emit(this.pathSelected);
   }
 }
