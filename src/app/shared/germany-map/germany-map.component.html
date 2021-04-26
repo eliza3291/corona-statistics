@@ -1,0 +1,10 @@
+<!-- (c) ammap.com | SVG map of Germany -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 585 792" [attr.width]="width" [attr.height]="height"
+  (click)="onClick($event)">
+  <g>
+    <path class="land" *ngFor="let svgPath of svgPaths" [class.active]="svgPath.id === pathSelected.id"
+      [attr.id]="svgPath.id" [attr.title]="svgPath.title" [attr.d]="svgPath.path" (click)="onClick($event,svgPath)">
+      <title>{{svgPath.title}}</title>
+    </path>
+  </g>
+</svg>
