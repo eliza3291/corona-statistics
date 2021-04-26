@@ -1,10 +1,43 @@
-<div class="row">
-  <div class="col-6">
+<div class="row align-items-center">
+  <div class="col-12">
+    <div class="row align-items-center">
+      <div class="col-md-7 col-12">
+        <span class="h1 font-weight-bold"> {{ selectedState.title ? selectedState.title : germanyTitle }} </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-12">
     <app-germany-map (elementOnClick)="onClick($event)"></app-germany-map>
 
   </div>
-  <div class="col-6">
-    <p>Show Data</p>
+  <div class="col-md-6 col-12">
+    <div class="row">
+      <div class="col-12">
+        <app-timeframe-selector (timeframeSelected)='onTimeframeSelected($event)'></app-timeframe-selector>
+      </div>
+    </div>
+    <div class="row my-5">
+      <div class="col-12 text-center">
+        <i class="fas fa-viruses display-4 d-block "></i>
+        <span class="display-4 d-block font-medium">{{totalCases}}</span>
+        <span>Cases</span>
+      </div>
+    </div>
+    <div class="row my-5">
+      <div class="col-12 text-center">
+        <i class="fas fa-cross display-4 d-block "></i>
+        <span class="display-4 d-block font-medium">{{totalDeaths}}</span>
+        <span>Deaths</span>
+      </div>
+    </div>
+    <div class="row my-5">
+      <div class="col-12 text-center">
+        <i class="fas fa-hand-holding-heart display-4 d-block "></i>
+        <span class="display-4 d-block font-medium">{{totalRecovered}}</span>
+        <span>Recovered</span>
+      </div>
+    </div>
   </div>
 
 </div>
