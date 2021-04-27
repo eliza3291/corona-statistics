@@ -1,8 +1,21 @@
-import { LineChart, LineChartSeries } from './line-chart.model';
+import { LineChart } from './line-chart.model';
 
 export class Timeseries extends Array<TimeseriesData> {
   constructor() {
     super(0);
+  }
+
+  static initializeClass(timeseriesData: TimeseriesData[]): Timeseries {
+    const timeseries = new Timeseries();
+    timeseriesData.forEach((element) => {
+      timeseries.addSeries({
+        cases: element.cases,
+        deaths: element.deaths,
+        recovered: element.recovered,
+        date: element.date
+      });
+    });
+    return timeseries;
   }
 
   getTotalCases(): number {
@@ -26,6 +39,10 @@ export class Timeseries extends Array<TimeseriesData> {
     });
     return lineChart;
   }
+
+  addSeries(data: TimeseriesData): number {
+    return this.push(data);
+  }
 }
 
 export interface TimeseriesData {
@@ -42,5 +59,13 @@ export class TimeseriesState {
   constructor(id: number) {
     this.idState = id;
     this.data = new Timeseries();
+  }
+
+  static initializeClass(idState: number, data: TimeseriesData[]): TimeseriesState {
+    const timeseriesState = new TimeseriesState(idState);
+    data.forEach((element) => {
+      timeseriesState.data.addSeries(element);
+    });
+    return timeseriesState;
   }
 }
