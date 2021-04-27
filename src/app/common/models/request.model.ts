@@ -1,4 +1,4 @@
-export interface Request {
+export interface QueryResponse {
   objectIdFieldName?: string;
   uniqueIdField?: UniqueIdField;
   globalIdFieldName?: string;
@@ -14,17 +14,18 @@ export interface Error {
 }
 
 export interface UniqueIdField {
-  name: number;
+  name: string;
   isSystemMaintained: boolean;
 }
 
 export interface Field {
-  name: number;
-  type: boolean;
+  name: string;
+  type: string;
   alias: string;
   sqlType: string;
-  domain: string;
-  defaultValue: string;
+  length?: number;
+  domain: string | null;
+  defaultValue: string | null;
 }
 
 export interface Feature {

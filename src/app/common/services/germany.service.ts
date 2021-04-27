@@ -5,7 +5,7 @@ import { Timeseries, TimeseriesState } from '../models/germany.model';
 import { environment } from '@environment';
 import { getDateBefore } from '../utils';
 import { map } from 'rxjs/operators';
-import { Feature, Request } from '../models';
+import { Feature, QueryResponse } from '../models';
 
 @Injectable()
 export class GermanyService {
@@ -28,9 +28,9 @@ export class GermanyService {
       .set('f', 'json');
     const requestUrl = environment.arcgisCoronaGermany.url;
     return this.http
-      .get<Request>(requestUrl, { params })
+      .get<QueryResponse>(requestUrl, { params })
       .pipe(
-        map((response: Request) => {
+        map((response: QueryResponse) => {
           const mappedResponse: Timeseries = new Timeseries();
           if (response.error) {
             throw new HttpErrorResponse({
@@ -75,9 +75,9 @@ export class GermanyService {
       .set('f', 'json');
     const requestUrl = environment.arcgisCoronaStates.url;
     return this.http
-      .get<Request>(requestUrl, { params })
+      .get<QueryResponse>(requestUrl, { params })
       .pipe(
-        map((response: Request) => {
+        map((response: QueryResponse) => {
           const mappedResponse: TimeseriesState = new TimeseriesState(idState);
           if (response.error) {
             throw new HttpErrorResponse({
