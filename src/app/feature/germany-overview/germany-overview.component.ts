@@ -1,52 +1,65 @@
-import { Component } from '@angular/core';
-import { State, TIMEFRAME, Timeframe } from '@common';
+import { Component, OnInit } from '@angular/core';
+import { LineChart, State, TIMEFRAME, Timeframe, Timeseries } from '@common';
 import { GermanyService } from 'src/app/common/services';
 
 @Component({
   templateUrl: './germany-overview.component.html',
   styleUrls: ['./germany-overview.component.scss']
 })
-export class GermanyOverviewComponent {
-  public timeframe: number;
+export class GermanyOverviewComponent implements OnInit {
+  public timeframe: Timeframe;
 
   public totalCases: number;
   public totalDeaths: number;
   public totalRecovered: number;
+
+  public timeseriesCases: LineChart;
+  public timeseriesDeaths: LineChart;
+  public timeseriesRecovered: LineChart;
+
   public germanyTitle: string;
   public selectedState: State;
 
   constructor(private germanyService: GermanyService) {
-    this.timeframe = TIMEFRAME[0].days;
+    this.timeframe = TIMEFRAME[0];
     this.germanyTitle = 'Germany';
     this.selectedState = Object.create(null);
+
     this.totalCases = 0;
     this.totalDeaths = 0;
     this.totalRecovered = 0;
+    this.timeseriesCases = new LineChart();
+    this.timeseriesDeaths = new LineChart();
+    this.timeseriesRecovered = new LineChart();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getData();
   }
 
   getData(): void {
-    this.germanyService.getTimeseriesGermany(this.timeframe).subscribe((response) => {
-      this.totalCases = response.getTotalCases();
-      this.totalDeaths = response.getTotalDeaths();
-      this.totalRecovered = response.getTotalRecovered();
+    this.germanyService.getTimeseriesGermany(this.timeframe.days).subscribe((response) => {
+      this.setData(response);
     });
   }
 
-  getDataState(idState: number) {
-    this.germanyService.getTimeseriesState(idState, this.timeframe).subscribe((response) => {
-      this.totalCases = response.data.getTotalCases();
-      this.totalDeaths = response.data.getTotalDeaths();
-      this.totalRecovered = response.data.getTotalRecovered();
+  getDataState(idState: number): void {
+    this.germanyService.getTimeseriesState(idState, this.timeframe.days).subscribe((response) => {
+      this.setData(response.data);
     });
   }
 
-  onClick(state: State) {
-    console.log(state.id, this.selectedState.id, state.id != this.selectedState.id);
-    if (state.id && state.id != this.selectedState.id) {
+  setData(timeseries: Timeseries): void {
+    this.totalCases = timeseries.getTotalCases();
+    this.totalDeaths = timeseries.getTotalDeaths();
+    this.totalRecovered = timeseries.getTotalRecovered();
+    this.timeseriesCases = timeseries.getChartSeries('cases');
+    this.timeseriesDeaths = timeseries.getChartSeries('deaths');
+    this.timeseriesRecovered = timeseries.getChartSeries('recovered');
+  }
+
+  onClick(state: State): void {
+    if (state.id && state.id !== this.selectedState.id) {
       this.getDataState(state.id);
     } else if (this.selectedState.id && !state.id) {
       this.getData();
@@ -55,7 +68,7 @@ export class GermanyOverviewComponent {
   }
 
   onTimeframeSelected(timeframe: Timeframe): void {
-    this.timeframe = timeframe.days;
+    this.timeframe = timeframe;
     if (this.selectedState.id) {
       this.getDataState(this.selectedState.id);
     } else {

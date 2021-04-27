@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { GermanyOverviewComponent } from './germany-overview.component';
 import { RouterModule, Routes } from '@angular/router';
-import { GermanyMapModule, TimeframeSelectorModule } from '@shared';
+import { GermanyMapModule, TimeframeSelectorModule, LineChartModule } from '@shared';
 import { GermanyService } from 'src/app/common/services';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -17,7 +17,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), GermanyMapModule, HttpClientModule, TimeframeSelectorModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    GermanyMapModule,
+    HttpClientModule,
+    TimeframeSelectorModule,
+    LineChartModule
+  ],
   declarations: [GermanyOverviewComponent],
   providers: [GermanyService]
 })
