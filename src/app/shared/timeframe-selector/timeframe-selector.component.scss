@@ -1,18 +1,4 @@
-$map-fill-color: #ffffff88;
-$map-stroke-color: rgba(0, 0, 0, 0.445);
-$map-active-color: rgba(0, 0, 0, 0.267);
-
-svg {
-  max-height: 75vh;
-  .land {
-    fill: $map-fill-color;
-    stroke: $map-stroke-color;
-    cursor: pointer;
-    &:hover {
-      stroke-width: 2px;
-    }
-    &.active {
-      fill: $map-active-color;
-    }
-  }
+.btn:focus,
+.btn.focus {
+  box-shadow: none;
 }
