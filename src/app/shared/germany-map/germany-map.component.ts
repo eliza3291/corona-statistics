@@ -7,8 +7,8 @@ import { STATES, State } from '@common';
   styleUrls: ['./germany-map.component.scss']
 })
 export class GermanyMapComponent implements OnInit {
-  @Input() height: string = '100%';
-  @Input() width: string = '100%';
+  @Input() height = '100%';
+  @Input() width = '100%';
 
   @Output() elementOnClick: EventEmitter<State> = new EventEmitter<State>();
 
@@ -19,7 +19,7 @@ export class GermanyMapComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onClick(event: any, state: State = Object.create(null)) {
+  onClick(event: any, state: State = Object.create(null)): void {
     event.stopPropagation();
     if (state.id) {
       this.pathSelected = this.pathSelected.id === state.id ? Object.create(null) : state;

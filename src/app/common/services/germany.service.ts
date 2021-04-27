@@ -14,7 +14,7 @@ export class GermanyService {
   public getTimeseriesGermany(days: number): Observable<Timeseries> {
     const startDate = getDateBefore(days);
 
-    let params: HttpParams = new HttpParams()
+    const params: HttpParams = new HttpParams()
       .set(
         'where',
         `(NeuerFall IN(1,0) OR NeuerTodesfall IN(1,0,-9) OR NeuGenesen IN(1,0,-9)) AND MeldeDatum >= TIMESTAMP '${startDate}'`
@@ -26,12 +26,12 @@ export class GermanyService {
       .set('groupByFieldsForStatistics', 'MeldeDatum')
       .set('orderByFields', 'MeldeDatum')
       .set('f', 'json');
-    let requestUrl = environment.arcgisCoronaGermany.url;
+    const requestUrl = environment.arcgisCoronaGermany.url;
     return this.http
       .get<Request>(requestUrl, { params })
       .pipe(
         map((response: Request) => {
-          let mappedResponse: Timeseries = new Timeseries();
+          const mappedResponse: Timeseries = new Timeseries();
           if (response.error) {
             throw new HttpErrorResponse({
               status: response.error.code,
@@ -61,7 +61,7 @@ export class GermanyService {
   public getTimeseriesState(idState: number, days: number): Observable<TimeseriesState> {
     const startDate = getDateBefore(days);
 
-    let params: HttpParams = new HttpParams()
+    const params: HttpParams = new HttpParams()
       .set(
         'where',
         `(NeuerFall IN(1,0) OR NeuerTodesfall IN(1,0,-9) OR NeuGenesen IN(1,0,-9)) AND MeldeDatum >= TIMESTAMP '${startDate}' AND IdBundesland = ${idState}`
@@ -73,12 +73,12 @@ export class GermanyService {
       .set('groupByFieldsForStatistics', 'IdBundesland,MeldeDatum,Bundesland')
       .set('orderByFields', 'IdBundesland,MeldeDatum')
       .set('f', 'json');
-    let requestUrl = environment.arcgisCoronaStates.url;
+    const requestUrl = environment.arcgisCoronaStates.url;
     return this.http
       .get<Request>(requestUrl, { params })
       .pipe(
         map((response: Request) => {
-          let mappedResponse: TimeseriesState = new TimeseriesState(idState);
+          const mappedResponse: TimeseriesState = new TimeseriesState(idState);
           if (response.error) {
             throw new HttpErrorResponse({
               status: response.error.code,
