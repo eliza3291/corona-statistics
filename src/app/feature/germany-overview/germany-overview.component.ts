@@ -7,12 +7,18 @@ import { GermanyService } from 'src/app/common/services';
   styleUrls: ['./germany-overview.component.scss']
 })
 export class GermanyOverviewComponent implements OnInit {
+  /**
+   * Selected timeframe
+   */
   public timeframe: Timeframe;
 
   public totalCases: number;
   public totalDeaths: number;
   public totalRecovered: number;
 
+  /**
+   * Variables to set data for the line charts
+   */
   public timeseriesCases: LineChart;
   public timeseriesDeaths: LineChart;
   public timeseriesRecovered: LineChart;
@@ -37,18 +43,29 @@ export class GermanyOverviewComponent implements OnInit {
     this.getData();
   }
 
+  /**
+   * Call service to get the data from Germany
+   */
   getData(): void {
     this.germanyService.getTimeseriesGermany(this.timeframe.days).subscribe((response) => {
+      console.log('Germany', response);
       this.setData(response);
     });
   }
 
+  /**
+   * Call service to get the data from every state
+   */
   getDataState(idState: number): void {
     this.germanyService.getTimeseriesState(idState, this.timeframe.days).subscribe((response) => {
+      console.log('states', response);
       this.setData(response.data);
     });
   }
 
+  /**
+   * Set data to be displayed in the template
+   */
   setData(timeseries: Timeseries): void {
     this.totalCases = timeseries.getTotalCases();
     this.totalDeaths = timeseries.getTotalDeaths();
@@ -58,7 +75,11 @@ export class GermanyOverviewComponent implements OnInit {
     this.timeseriesRecovered = timeseries.getChartSeries('recovered');
   }
 
-  onClick(state: State): void {
+  /**
+   * Event triggered by the germany map component to indicate if a state is been selected and which one.
+   * Update Data
+   */
+  onClickState(state: State): void {
     if (state.id && state.id !== this.selectedState.id) {
       this.getDataState(state.id);
     } else if (this.selectedState.id && !state.id) {
@@ -67,6 +88,10 @@ export class GermanyOverviewComponent implements OnInit {
     this.selectedState = state;
   }
 
+  /**
+   * Event triggered by the timeframe selector component with the selected timeframe.
+   * Update Data
+   */
   onTimeframeSelected(timeframe: Timeframe): void {
     this.timeframe = timeframe;
     if (this.selectedState.id) {
