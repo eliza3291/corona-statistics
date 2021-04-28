@@ -10,8 +10,7 @@ const routes: Routes = [
       { path: '', redirectTo: '/overview', pathMatch: 'full' },
       {
         path: 'overview',
-        loadChildren: () =>
-          import('./feature/germany-overview/germany-overview.module').then((m) => m.GermanyOverviewModule)
+        loadChildren: () => import('./germany-overview/germany-overview.module').then((m) => m.GermanyOverviewModule)
       }
     ]
   },

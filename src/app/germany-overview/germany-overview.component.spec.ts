@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GermanyService, MAPPED_GERMANY_RESPONSE, MAPPED_STATE_RESPONSE, Timeseries, TimeseriesState } from '@common';
-import { GermanyMapModule, TimeframeSelectorModule, LineChartModule } from '@shared';
 import { Observable, of } from 'rxjs';
+import { GermanyMapComponent, LineChartComponent, TimeframeSelectorComponent } from './components';
 
 import { GermanyOverviewComponent } from './germany-overview.component';
 
@@ -25,14 +25,14 @@ describe('OverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GermanyOverviewComponent],
+      declarations: [GermanyOverviewComponent, TimeframeSelectorComponent, GermanyMapComponent, LineChartComponent],
       providers: [
         {
           provide: GermanyService,
           useClass: GermanyServiceMock
         }
       ],
-      imports: [TimeframeSelectorModule, GermanyMapModule, LineChartModule, BrowserAnimationsModule]
+      imports: [BrowserAnimationsModule]
     })
       .compileComponents()
       .then(() => {
