@@ -48,7 +48,6 @@ export class GermanyOverviewComponent implements OnInit {
    */
   getData(): void {
     this.germanyService.getTimeseriesGermany(this.timeframe.days).subscribe((response) => {
-      console.log('Germany', response);
       this.setData(response);
     });
   }
@@ -58,7 +57,6 @@ export class GermanyOverviewComponent implements OnInit {
    */
   getDataState(idState: number): void {
     this.germanyService.getTimeseriesState(idState, this.timeframe.days).subscribe((response) => {
-      console.log('states', response);
       this.setData(response.data);
     });
   }
