@@ -1,6 +1,6 @@
-import { TimeseriesState } from '../models';
+import { Timeseries, TimeseriesState } from '../models';
 
-export const MAPPED_GERMANY_RESPONSE = [
+export const MAPPED_GERMANY_RESPONSE: Timeseries = Timeseries.initializeClass([
   {
     cases: 12343,
     deaths: 35,
@@ -49,7 +49,7 @@ export const MAPPED_GERMANY_RESPONSE = [
     recovered: 51,
     date: 'April 26, 2021'
   }
-];
+]);
 
 export const MAPPED_STATE_RESPONSE: TimeseriesState = TimeseriesState.initializeClass(1, [
   {
