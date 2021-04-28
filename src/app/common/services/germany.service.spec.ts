@@ -65,6 +65,7 @@ describe('GermanyService', () => {
       .getTimeseriesGermany(1)
       .pipe(
         catchError((error) => {
+          // Pass error for test proposes
           return of(error);
         })
       )
@@ -96,6 +97,7 @@ describe('GermanyService', () => {
       .getTimeseriesGermany(7)
       .pipe(
         catchError((error) => {
+          // Pass error for test proposes
           return of(error);
         })
       )
@@ -159,6 +161,7 @@ describe('GermanyService', () => {
       .getTimeseriesState(idState, days)
       .pipe(
         catchError((error) => {
+          // Pass error for test proposes
           return of(error);
         })
       )
@@ -192,6 +195,7 @@ describe('GermanyService', () => {
       .getTimeseriesState(idState, days)
       .pipe(
         catchError((error) => {
+          // Pass error for test proposes
           return of(error);
         })
       )
