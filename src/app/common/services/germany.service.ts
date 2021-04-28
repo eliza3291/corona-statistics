@@ -39,7 +39,7 @@ export class GermanyService {
               error: response.error.details
             });
           }
-          if (response.features) {
+          if (response.features && Array.isArray(response.features) && response.features.length > 0) {
             response.features.forEach((feature: Feature) => {
               mappedResponse.push({
                 cases: feature.attributes.cases,
@@ -51,6 +51,12 @@ export class GermanyService {
                   day: 'numeric'
                 })
               });
+            });
+          } else {
+            throw new HttpErrorResponse({
+              url: `${requestUrl}?${params.toString()}`,
+              status: 404,
+              statusText: 'Not found'
             });
           }
           return mappedResponse;
@@ -86,7 +92,7 @@ export class GermanyService {
               error: response.error.details
             });
           }
-          if (response.features) {
+          if (response.features && Array.isArray(response.features) && response.features.length > 0) {
             response.features.forEach((feature: Feature) => {
               mappedResponse.data.push({
                 cases: feature.attributes.cases,
@@ -98,6 +104,12 @@ export class GermanyService {
                   day: 'numeric'
                 })
               });
+            });
+          } else {
+            throw new HttpErrorResponse({
+              url: `${requestUrl}?${params.toString()}`,
+              status: 404,
+              statusText: 'Not found'
             });
           }
           return mappedResponse;

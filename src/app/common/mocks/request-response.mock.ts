@@ -201,3 +201,10 @@ export const RESPONSE_STATE_DATA: QueryResponse = {
     }
   ]
 };
+
+export const RESPONSE_NO_DATA: QueryResponse = {
+  objectIdFieldName: 'ObjectId',
+  uniqueIdField: { name: 'ObjectId', isSystemMaintained: true },
+  globalIdFieldName: '',
+  features: []
+};
