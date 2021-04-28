@@ -202,6 +202,10 @@ export const RESPONSE_STATE_DATA: QueryResponse = {
   ]
 };
 
+export const RESPONSE_BAD_REQUEST_DATA: QueryResponse = {
+  error: { code: 400, message: '', details: ['"outStatistics" parameter is invalid'] }
+};
+
 export const RESPONSE_NO_DATA: QueryResponse = {
   objectIdFieldName: 'ObjectId',
   uniqueIdField: { name: 'ObjectId', isSystemMaintained: true },
