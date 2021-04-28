@@ -120,7 +120,7 @@ describe('GermanyService', () => {
 
     const req = httpMock.expectOne((r) => {
       // Check only url to check Error 400
-      return r.url == `${environment.arcgisCoronaGermany.url}`;
+      return r.url === `${environment.arcgisCoronaGermany.url}`;
     });
     expect(req.request.method).toBe('GET');
     req.flush(RESPONSE_BAD_REQUEST_DATA);
@@ -214,11 +214,9 @@ describe('GermanyService', () => {
       'f=json'
     ];
 
-    const urlRequest = encodeURI(`${environment.arcgisCoronaGermany.url}?${params.join('&')}`);
-
     const req = httpMock.expectOne((r) => {
       // Check only url to check Error 400
-      return r.url == `${environment.arcgisCoronaGermany.url}`;
+      return r.url === `${environment.arcgisCoronaGermany.url}`;
     });
     expect(req.request.method).toBe('GET');
     req.flush(RESPONSE_BAD_REQUEST_DATA);

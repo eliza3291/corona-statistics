@@ -34,6 +34,7 @@ export class GermanyService {
           const mappedResponse: Timeseries = new Timeseries();
           if (response.error) {
             throw new HttpErrorResponse({
+              url: `${requestUrl}?${params.toString()}`,
               status: response.error.code,
               statusText: response.error.message,
               error: response.error.details
@@ -87,6 +88,7 @@ export class GermanyService {
           const mappedResponse: TimeseriesState = new TimeseriesState(idState);
           if (response.error) {
             throw new HttpErrorResponse({
+              url: `${requestUrl}?${params.toString()}`,
               status: response.error.code,
               statusText: response.error.message,
               error: response.error.details
