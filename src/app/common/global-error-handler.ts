@@ -1,7 +1,7 @@
 import { ErrorHandler, Injectable, Injector } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AppError } from './models';
-import { AlertService } from '@common';
+import { AlertService } from './services';
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
