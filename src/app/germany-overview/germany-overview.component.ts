@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LineChart, State, TIMEFRAME, Timeframe, Timeseries } from '@common';
-import { GermanyService } from 'src/app/common/services';
+import { AlertService, GermanyService } from 'src/app/common/services';
 
 @Component({
   templateUrl: './germany-overview.component.html',
@@ -26,7 +26,7 @@ export class GermanyOverviewComponent implements OnInit {
   public germanyTitle: string;
   public selectedState: State;
 
-  constructor(private germanyService: GermanyService) {
+  constructor(private germanyService: GermanyService, private alertService: AlertService) {
     this.timeframe = TIMEFRAME[0];
     this.germanyTitle = 'Germany';
     this.selectedState = Object.create(null);
@@ -65,6 +65,10 @@ export class GermanyOverviewComponent implements OnInit {
    * Set data to be displayed in the template
    */
   setData(timeseries: Timeseries): void {
+    /**
+     * If alert was shown, remove any old alert.
+     */
+    this.alertService.remove();
     this.totalCases = timeseries.getTotalCases();
     this.totalDeaths = timeseries.getTotalDeaths();
     this.totalRecovered = timeseries.getTotalRecovered();
