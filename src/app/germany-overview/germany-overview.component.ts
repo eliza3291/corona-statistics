@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LineChart, State, TIMEFRAME, Timeframe, Timeseries } from '@common';
+import { Data, LineChart, State, TIMEFRAME, Timeframe, Timeseries } from '@common';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AlertService, GermanyService } from 'src/app/common/services';
@@ -14,9 +14,7 @@ export class GermanyOverviewComponent implements OnInit {
    */
   public timeframe: Timeframe;
 
-  public totalCases: number;
-  public totalDeaths: number;
-  public totalRecovered: number;
+  public dataTotals: Data;
 
   /**
    * Variables to set data for the line charts
@@ -33,9 +31,7 @@ export class GermanyOverviewComponent implements OnInit {
     this.germanyTitle = 'Germany';
     this.selectedState = Object.create(null);
 
-    this.totalCases = 0;
-    this.totalDeaths = 0;
-    this.totalRecovered = 0;
+    this.dataTotals = Object.create(null);
     this.timeseriesCases = new LineChart();
     this.timeseriesDeaths = new LineChart();
     this.timeseriesRecovered = new LineChart();
@@ -83,9 +79,7 @@ export class GermanyOverviewComponent implements OnInit {
    * Reset data when error on requests.
    */
   resetData(): void {
-    this.totalCases = 0;
-    this.totalDeaths = 0;
-    this.totalRecovered = 0;
+    this.dataTotals = Object.create(null);
     this.timeseriesCases = new LineChart();
     this.timeseriesDeaths = new LineChart();
     this.timeseriesRecovered = new LineChart();
@@ -99,9 +93,9 @@ export class GermanyOverviewComponent implements OnInit {
      * If alert was shown, remove any old alert.
      */
     this.alertService.remove();
-    this.totalCases = timeseries.getTotalCases();
-    this.totalDeaths = timeseries.getTotalDeaths();
-    this.totalRecovered = timeseries.getTotalRecovered();
+    this.dataTotals.cases = timeseries.getTotalCases();
+    this.dataTotals.deaths = timeseries.getTotalDeaths();
+    this.dataTotals.recovered = timeseries.getTotalRecovered();
     this.timeseriesCases = timeseries.getChartSeries('cases');
     this.timeseriesDeaths = timeseries.getChartSeries('deaths');
     this.timeseriesRecovered = timeseries.getChartSeries('recovered');

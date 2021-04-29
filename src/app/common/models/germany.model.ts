@@ -45,11 +45,14 @@ export class Timeseries extends Array<TimeseriesData> {
   }
 }
 
-export interface TimeseriesData {
+export interface TimeseriesData extends Data {
+  date: string;
+}
+
+export interface Data {
   cases: number;
   deaths: number;
   recovered: number;
-  date: string;
 }
 
 export class TimeseriesState {

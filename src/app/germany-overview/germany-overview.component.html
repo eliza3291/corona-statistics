@@ -8,7 +8,7 @@
         <app-timeframe-selector (timeframeSelected)="onTimeframeSelected($event)"></app-timeframe-selector>
         <div class="card-body mr-lg-5 mr-md-3 mr-sm-2 ml-lg-5 ml-md-3 ml-sm-2 mx-0 px-0">
           <app-alert></app-alert>
-          <div class="row mx-0">
+          <div *ngIf="dataTotals.cases != undefined" class="row mx-0">
             <div class="col-md-6 col-12">
               <app-germany-map (elementOnClick)="onClickState($event)"></app-germany-map>
             </div>
@@ -16,17 +16,17 @@
               <div class="row">
                 <div class="col-md-12 col-sm-4 col-12 text-center mt-md-5 mt-3">
                   <i class="fas fa-viruses display-4 d-block"></i>
-                  <span class="display-4 d-block font-medium">{{ totalCases }}</span>
+                  <span class="display-4 d-block font-medium">{{ dataTotals.cases }}</span>
                   <span>Cases</span>
                 </div>
                 <div class="col-md-12 col-sm-4 col-12 text-center mt-md-5 mt-3">
                   <i class="fas fa-cross display-4 d-block"></i>
-                  <span class="display-4 d-block font-medium">{{ totalDeaths }}</span>
+                  <span class="display-4 d-block font-medium">{{ dataTotals.deaths }}</span>
                   <span>Deaths</span>
                 </div>
                 <div class="col-md-12 col-sm-4 col-12 text-center mt-md-5 mt-3">
                   <i class="fas fa-hand-holding-heart display-4 d-block"></i>
-                  <span class="display-4 d-block font-medium">{{ totalRecovered }}</span>
+                  <span class="display-4 d-block font-medium">{{ dataTotals.recovered }}</span>
                   <span>Recovered</span>
                 </div>
               </div>
