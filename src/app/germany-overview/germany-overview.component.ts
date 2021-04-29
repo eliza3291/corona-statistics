@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LineChart, State, TIMEFRAME, Timeframe, Timeseries } from '@common';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { AlertService, GermanyService } from 'src/app/common/services';
 
 @Component({
@@ -47,18 +49,46 @@ export class GermanyOverviewComponent implements OnInit {
    * Call service to get the data from Germany
    */
   getData(): void {
-    this.germanyService.getTimeseriesGermany(this.timeframe.days).subscribe((response) => {
-      this.setData(response);
-    });
+    this.germanyService
+      .getTimeseriesGermany(this.timeframe.days)
+      .pipe(
+        catchError((error) => {
+          this.resetData();
+          return throwError(error);
+        })
+      )
+      .subscribe((response) => {
+        this.setData(response);
+      });
   }
 
   /**
    * Call service to get the data from every state
    */
   getDataState(idState: number): void {
-    this.germanyService.getTimeseriesState(idState, this.timeframe.days).subscribe((response) => {
-      this.setData(response.data);
-    });
+    this.germanyService
+      .getTimeseriesState(idState, this.timeframe.days)
+      .pipe(
+        catchError((error) => {
+          this.resetData();
+          return throwError(error);
+        })
+      )
+      .subscribe((response) => {
+        this.setData(response.data);
+      });
+  }
+
+  /**
+   * Reset data when error on requests.
+   */
+  resetData(): void {
+    this.totalCases = 0;
+    this.totalDeaths = 0;
+    this.totalRecovered = 0;
+    this.timeseriesCases = new LineChart();
+    this.timeseriesDeaths = new LineChart();
+    this.timeseriesRecovered = new LineChart();
   }
 
   /**
