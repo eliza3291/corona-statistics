@@ -1,0 +1,105 @@
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('..//fonts/NunitoSans-Light-Vietnamese.woff2') format('woff2');
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('..//fonts/NunitoSans-Light-Extended.woff2') format('woff2');
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('..//fonts/NunitoSans-Light-Latin.woff2') format('woff2');
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('..//fonts/NunitoSans-Regular-Vietnamese.woff2') format('woff2');
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('..//fonts/NunitoSans-Regular-Extended.woff2') format('woff2');
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('..//fonts/NunitoSans-Regular-Latin.woff2') format('woff2');
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('..//fonts/NunitoSans-SemiBold-Vietnamese.woff2') format('woff2');
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('..//fonts/NunitoSans-SemiBold-Extended.woff2') format('woff2');
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('..//fonts/NunitoSans-SemiBold-Latin.woff2') format('woff2');
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('..//fonts/NunitoSans-Bold-Vietnamese.woff2') format('woff2');
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('..//fonts/NunitoSans-Bold-Extended.woff2') format('woff2');
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('..//fonts/NunitoSans-Bold-Latin.woff2') format('woff2');
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: url('..//fonts/NunitoSans-ExtraBold-Vietnamese.woff2') format('woff2');
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: url('..//fonts/NunitoSans-ExtraBold-Extended.woff2') format('woff2');
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: url('..//fonts/NunitoSans-ExtraBold-Latin.woff2') format('woff2');
+}
