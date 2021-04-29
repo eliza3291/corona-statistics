@@ -1,6 +1,6 @@
 import { BreakpointItem } from '../models';
 
-export const DEFAULT_ITEM_WIDTH = 60;
+export const DEFAULT_ITEM_WIDTH = 35;
 
 /**
  * List of avaibales breakpoint width and the number of items to show for each one.
