@@ -16,12 +16,13 @@ export class AppError extends Error {
    */
   public url?: string;
   public appError: CustomAppError;
-  public translatedMessage?: string;
+  public translatedMessage: string;
 
   constructor(message: string) {
     super(message);
     this.name = 'AppError';
     this.appError = Object.create(null);
+    this.translatedMessage = message;
   }
 
   static initializeError(error: Error): AppError {

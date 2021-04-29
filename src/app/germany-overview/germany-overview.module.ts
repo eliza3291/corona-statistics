@@ -4,9 +4,10 @@ import { GermanyOverviewComponent } from './germany-overview.component';
 import { RouterModule, Routes } from '@angular/router';
 import { GermanyService } from 'src/app/common/services';
 import { HttpClientModule } from '@angular/common/http';
-import { GermanyMapComponent, TimeframeSelectorComponent, LineChartComponent } from './components';
+import { GermanyMapComponent, TimeframeSelectorComponent, LineChartComponent, AlertComponent } from './components';
 import { LineChartModule } from '@swimlane/ngx-charts';
 import { ResponsiveWidthModule } from '@common';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {
@@ -19,8 +20,21 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), HttpClientModule, LineChartModule, ResponsiveWidthModule],
-  declarations: [GermanyOverviewComponent, GermanyMapComponent, TimeframeSelectorComponent, LineChartComponent],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    HttpClientModule,
+    LineChartModule,
+    ResponsiveWidthModule,
+    NgbAlertModule
+  ],
+  declarations: [
+    GermanyOverviewComponent,
+    GermanyMapComponent,
+    TimeframeSelectorComponent,
+    LineChartComponent,
+    AlertComponent
+  ],
   providers: [GermanyService]
 })
 export class GermanyOverviewModule {}
