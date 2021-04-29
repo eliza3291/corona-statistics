@@ -52,7 +52,7 @@ export class AppError extends Error {
    */
   getMessageFromCode(code: number): string | undefined {
     if (!navigator.onLine) {
-      return 'Hey! You are offline. Please check your internet connection.';
+      return 'Hey! You are offline. Please check your internet connection and reload the page.';
     }
 
     switch (code) {
@@ -62,8 +62,8 @@ export class AppError extends Error {
       case 404: {
         return 'No results were found with the given criteria.';
       }
+      default:
+        return 'Something went wrong during the request. Please try again. If the problem persists contact support.';
     }
-
-    return undefined;
   }
 }
