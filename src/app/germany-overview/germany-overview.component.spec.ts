@@ -12,9 +12,10 @@ import {
 } from '@common';
 import { LineChartModule } from '@swimlane/ngx-charts';
 import { Observable, of } from 'rxjs';
-import { GermanyMapComponent, LineChartComponent, TimeframeSelectorComponent } from './components';
+import { AlertComponent, GermanyMapComponent, LineChartComponent, TimeframeSelectorComponent } from './components';
 
 import { GermanyOverviewComponent } from './germany-overview.component';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 export class GermanyServiceMock {
   getTimeseriesGermany(): Observable<Timeseries> {
@@ -33,14 +34,20 @@ describe('OverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GermanyOverviewComponent, TimeframeSelectorComponent, GermanyMapComponent, LineChartComponent],
+      declarations: [
+        GermanyOverviewComponent,
+        TimeframeSelectorComponent,
+        GermanyMapComponent,
+        LineChartComponent,
+        AlertComponent
+      ],
       providers: [
         {
           provide: GermanyService,
           useClass: GermanyServiceMock
         }
       ],
-      imports: [BrowserAnimationsModule, LineChartModule, ResponsiveWidthModule]
+      imports: [BrowserAnimationsModule, LineChartModule, ResponsiveWidthModule, NgbAlertModule]
     })
       .compileComponents()
       .then(() => {
