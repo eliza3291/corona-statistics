@@ -47,7 +47,6 @@ export class GermanyService {
                 deaths: feature.attributes.deaths,
                 recovered: feature.attributes.recovered,
                 date: new Date(feature.attributes.date).toLocaleDateString(undefined, {
-                  year: 'numeric',
                   month: 'long',
                   day: 'numeric'
                 })
@@ -101,7 +100,6 @@ export class GermanyService {
                 deaths: feature.attributes.deaths,
                 recovered: feature.attributes.recovered,
                 date: new Date(feature.attributes.date).toLocaleDateString(undefined, {
-                  year: 'numeric',
                   month: 'long',
                   day: 'numeric'
                 })
