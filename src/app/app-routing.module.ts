@@ -7,16 +7,16 @@ const routes: Routes = [
     path: '',
     component: CoreComponent,
     children: [
-      { path: '', redirectTo: '/overview', pathMatch: 'full' },
       {
-        path: 'overview',
-        loadChildren: () => import('./germany-overview/germany-overview.module').then((m) => m.GermanyOverviewModule)
+        path: '',
+        loadChildren: () => import('./germany-overview/germany-overview.module').then((m) => m.GermanyOverviewModule),
+        pathMatch: 'full'
       }
     ]
   },
   {
     path: '**',
-    redirectTo: '/overview'
+    redirectTo: ''
   }
 ];
 
