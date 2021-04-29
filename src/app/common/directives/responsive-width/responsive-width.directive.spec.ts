@@ -1,8 +1,9 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { LineChartComponent } from 'src/app/shared/line-chart/line-chart.component';
 import { ResponsiveWidthDirective } from './responsive-width.directive';
 import { By } from '@angular/platform-browser';
+import { LineChartComponent } from 'src/app/germany-overview/components';
+import { LineChartModule } from '@swimlane/ngx-charts';
 
 describe('ResponsiveWidthDirective', () => {
   let component: LineChartComponent;
@@ -11,6 +12,7 @@ describe('ResponsiveWidthDirective', () => {
 
   beforeEach(() => {
     fixture = TestBed.configureTestingModule({
+      imports: [LineChartModule],
       declarations: [LineChartComponent, ResponsiveWidthDirective]
     }).createComponent(LineChartComponent);
     debugElement = fixture.debugElement;

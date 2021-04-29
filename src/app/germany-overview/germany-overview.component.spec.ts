@@ -2,7 +2,15 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GermanyService, MAPPED_GERMANY_RESPONSE, MAPPED_STATE_RESPONSE, Timeseries, TimeseriesState } from '@common';
+import {
+  GermanyService,
+  MAPPED_GERMANY_RESPONSE,
+  MAPPED_STATE_RESPONSE,
+  ResponsiveWidthModule,
+  Timeseries,
+  TimeseriesState
+} from '@common';
+import { LineChartModule } from '@swimlane/ngx-charts';
 import { Observable, of } from 'rxjs';
 import { GermanyMapComponent, LineChartComponent, TimeframeSelectorComponent } from './components';
 
@@ -32,7 +40,7 @@ describe('OverviewComponent', () => {
           useClass: GermanyServiceMock
         }
       ],
-      imports: [BrowserAnimationsModule]
+      imports: [BrowserAnimationsModule, LineChartModule, ResponsiveWidthModule]
     })
       .compileComponents()
       .then(() => {
