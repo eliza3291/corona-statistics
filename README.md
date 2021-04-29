@@ -1,46 +1,52 @@
-# CoronaStatisticsProject
+# :chart_with_downwards_trend: Corona Statistics Project
+
+Simple web application, completely responsive to show Corona statistics about Germany allowing the user to select between the next timeframes from now:
+
+- Last Week.
+- Last 2 Weeks.
+- Last 3 Weeks.
+- Last 4 Weeks.
+
+Note: Timeframes can be changed inside `src/app/common/data/timeframe.data.ts`
+
+## :hammer_and_wrench: Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+I like to work with a local version of Angular CLI, so I create some scripts to make easier running commands.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build:production:compress` to build the project minifying the HTML files and compressing (scss,js,html,json,ico,svg) files with gzip and brotli.
 
-## Running unit tests
+Note: For more information check the scripts inside package.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Documentation
 
-## Running end-to-end tests
+Run `npm run compodoc` to generate a the project documentation using Compodoc.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Tests
 
-## Further help
+Run `npm run test` will check lint and prettier format before running all unit tests.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Bundle size
 
-## Data Source
+Run `npm run build:production:analyze` will analize the bundle size of the project with webpack-bundle-analyzer.
+
+## :file_cabinet: Data Source
 
 Robert Koch-Institut: [COVID-19](https://npgeo-corona-npgeo-de.hub.arcgis.com/)
 
-## Credits
+## :clap: Credits
 
-### Germany Map
+### :earth_africa: SVG Germany Map
 
-- Germany EU.svg: *ESC 2011 Potential host cities.svg: *Karte Deutschland.svg: David Liuzzo
-- derivative work: AxG
-- Flag of Europe.svg: User:Verdy p, User:-xfi-, User:Paddu, User:Nightstallion, User:Funakoshi, User:Jeltz, User:Dbenbenn, User:Zscout370
-- derivative work: Fry1989 22:00, 8 December 2010 (UTC)
-- Flag of Germany.svg:
-- derivative work: Fry1989 23:14, 25 January 2011 (UTC)
+Free SVG Maps from [AMCHARTS](https://www.amcharts.com/svg-maps/?map=germany)
 
-### Xtreme Angular 11 Admin Lite
+### :de: Icon (Germany map)
 
-Copyright © 2019 WrapPixel
+Flag map of Germany from [Wikimedia Commons](https://en.wikipedia.org/wiki/File:Flag_map_of_Germany.svg)
+
+### :nail_care: Angular Template
+
+Xtreme Angular 11 Admin Lite from [WrapPixel](https://www.wrappixel.com/templates/xtreme-angular-lite/)
