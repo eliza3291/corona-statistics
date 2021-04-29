@@ -4,3 +4,4 @@ export * from './request.model';
 export * from './timeframe.model';
 export * from './line-chart.model';
 export * from './error.model';
+export * from './alert.model';
