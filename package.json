@@ -13,6 +13,7 @@
     "gzipper": "npx gzipper compress --include scss,js,html,json,ico,svg ./docs",
     "brotli": "npx gzipper compress --brotli --include scss,js,html,json,ico,svg ./docs",
     "minify-html": "npx html-minifier docs/index.html --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true -o docs/index.html",
+    "build:production": "npx ng build --prod --build-optimizer --delete-output-path --aot",
     "build:production:analyze": "npx ng build --prod --aot=true --build-optimizer=true --delete-output-path --vendor-chunk --common-chunk --stats-json",
     "postbuild:production:analyze": "npm run analyze",
     "build:production:compress": "npx ng build --base-href='https://eliza3291.github.io/corona-statistics/' --prod --build-optimizer --delete-output-path --aot",
