@@ -6,10 +6,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: ESLint Checker
-        uses: stefanoeb/eslint-action@1.0.2
-        with:
-          files: src/
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -21,3 +17,5 @@ jobs:
         env:
           CI: true
       - run: npm run build:production --if-present
+        env:
+          CI: true
