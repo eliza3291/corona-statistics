@@ -1,5 +1,5 @@
 export interface Timeframe {
-  id: string;
-  days: number;
-  name: string;
+	id: string;
+	days: number;
+	name: string;
 }

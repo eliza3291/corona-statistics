@@ -10,31 +10,31 @@ import { ResponsiveWidthModule } from '@common';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: GermanyOverviewComponent,
-    data: {
-      title: 'Germany Overview'
-    }
-  }
+	{
+		path: '',
+		component: GermanyOverviewComponent,
+		data: {
+			title: 'Germany Overview'
+		}
+	}
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    HttpClientModule,
-    LineChartModule,
-    ResponsiveWidthModule,
-    NgbAlertModule
-  ],
-  declarations: [
-    GermanyOverviewComponent,
-    GermanyMapComponent,
-    TimeframeSelectorComponent,
-    LineChartComponent,
-    AlertComponent
-  ],
-  providers: [GermanyService]
+	imports: [
+		CommonModule,
+		RouterModule.forChild(routes),
+		HttpClientModule,
+		LineChartModule,
+		ResponsiveWidthModule,
+		NgbAlertModule
+	],
+	declarations: [
+		GermanyOverviewComponent,
+		GermanyMapComponent,
+		TimeframeSelectorComponent,
+		LineChartComponent,
+		AlertComponent
+	],
+	providers: [GermanyService]
 })
 export class GermanyOverviewModule {}

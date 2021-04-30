@@ -7,56 +7,56 @@ import { ResponsiveWidthModule } from '@common';
 import { LineChartComponent } from './line-chart.component';
 
 describe('LineChartComponent', () => {
-  let component: LineChartComponent;
-  let fixture: ComponentFixture<LineChartComponent>;
-  let debugElement: DebugElement;
+	let component: LineChartComponent;
+	let fixture: ComponentFixture<LineChartComponent>;
+	let debugElement: DebugElement;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [LineChartComponent],
-      imports: [LineChartModule, BrowserAnimationsModule, ResponsiveWidthModule]
-    })
-      .compileComponents()
-      .then(() => {
-        fixture = TestBed.createComponent(LineChartComponent);
-        debugElement = fixture.debugElement;
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-      });
-  });
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
+			declarations: [LineChartComponent],
+			imports: [LineChartModule, BrowserAnimationsModule, ResponsiveWidthModule]
+		})
+			.compileComponents()
+			.then(() => {
+				fixture = TestBed.createComponent(LineChartComponent);
+				debugElement = fixture.debugElement;
+				component = fixture.componentInstance;
+				fixture.detectChanges();
+			});
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 
-  it('not show ngx-charts-line-chart when results lenght == 0', () => {
-    const chart = debugElement.nativeElement.querySelectorAll('ngx-charts-line-charts');
-    expect(chart.length).toBe(0);
-  });
+	it('not show ngx-charts-line-chart when results lenght == 0', () => {
+		const chart = debugElement.nativeElement.querySelectorAll('ngx-charts-line-charts');
+		expect(chart.length).toBe(0);
+	});
 
-  it(
-    'show ngx-charts-line-chart when results lenght > 0',
-    waitForAsync(() => {
-      let chart: NodeList;
-      component.results = LINECHART_MOCK;
-      fixture.detectChanges();
-      fixture.whenStable().then(() => {
-        chart = debugElement.nativeElement.querySelectorAll('ngx-charts-line-charts');
-        expect(chart).toBeTruthy();
-      });
-    })
-  );
+	it(
+		'show ngx-charts-line-chart when results lenght > 0',
+		waitForAsync(() => {
+			let chart: NodeList;
+			component.results = LINECHART_MOCK;
+			fixture.detectChanges();
+			fixture.whenStable().then(() => {
+				chart = debugElement.nativeElement.querySelectorAll('ngx-charts-line-charts');
+				expect(chart).toBeTruthy();
+			});
+		})
+	);
 
-  it('calculate the right viewWidth when Mock length = 28 and innerWidth = 630', () => {
-    component.results = LINECHART_MOCK;
-    fixture.detectChanges();
-    // Overwrite innerWidth with new property
-    (window as any).innerWidth = 630;
-    window.dispatchEvent(new Event('resize'));
-    expect(component.viewWidth).toBe(1680);
-  });
+	it('calculate the right viewWidth when Mock length = 28 and innerWidth = 630', () => {
+		component.results = LINECHART_MOCK;
+		fixture.detectChanges();
+		// Overwrite innerWidth with new property
+		(window as any).innerWidth = 630;
+		window.dispatchEvent(new Event('resize'));
+		expect(component.viewWidth).toBe(1680);
+	});
 
-  it('test yAxisFormatting: when value = 0.8 return ""', () => {
-    expect(component.yAxisTickFormatting(0.8)).toBe('');
-  });
+	it('test yAxisFormatting: when value = 0.8 return ""', () => {
+		expect(component.yAxisTickFormatting(0.8)).toBe('');
+	});
 });

@@ -9,27 +9,27 @@ import { GlobalErrorHandler } from './global-error-handler';
 const WindowToken = new InjectionToken<Window>('Window');
 
 describe('GlobalErrorHandler', () => {
-  let injector: TestBed;
-  let globalErrorHandler: GlobalErrorHandler;
-  let errorHandler: jasmine.Spy;
+	let injector: TestBed;
+	let globalErrorHandler: GlobalErrorHandler;
+	let errorHandler: jasmine.Spy;
 
-  beforeEach(() => {
-    errorHandler = spyOn(ErrorHandler.prototype, 'handleError');
+	beforeEach(() => {
+		errorHandler = spyOn(ErrorHandler.prototype, 'handleError');
 
-    TestBed.configureTestingModule({
-      providers: [{ provide: ErrorHandler, useClass: GlobalErrorHandler }]
-    });
-    injector = getTestBed();
-    globalErrorHandler = (injector.inject(ErrorHandler) as unknown) as GlobalErrorHandler;
-  });
+		TestBed.configureTestingModule({
+			providers: [{ provide: ErrorHandler, useClass: GlobalErrorHandler }]
+		});
+		injector = getTestBed();
+		globalErrorHandler = (injector.inject(ErrorHandler) as unknown) as GlobalErrorHandler;
+	});
 
-  beforeEach(() => {
-    spyOn(console, 'error');
-  });
+	beforeEach(() => {
+		spyOn(console, 'error');
+	});
 
-  it('should call globalErrorHandler with Error', () => {
-    const error = new Error();
-    globalErrorHandler.handleError(error);
-    expect(console.error).toHaveBeenCalled();
-  });
+	it('should call globalErrorHandler with Error', () => {
+		const error = new Error();
+		globalErrorHandler.handleError(error);
+		expect(console.error).toHaveBeenCalled();
+	});
 });
