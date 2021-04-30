@@ -57,7 +57,7 @@ describe('LineChartComponent', () => {
 		component.results = LINECHART_MOCK;
 		fixture.detectChanges();
 		// Overwrite innerWidth with new property
-		(window as any).innerWidth = 630;
+		viewport.set(630);
 		window.dispatchEvent(new Event('resize'));
 
 		expect(component.viewWidth).toBe(980);
