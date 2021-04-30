@@ -1,5 +1,5 @@
-name: Build, Test, and Deploy
-on: [push]
+name: Checkout, ESLint Checker, Test and Build
+on: [pull_request]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -10,3 +10,12 @@ jobs:
         uses: stefanoeb/eslint-action@1.0.2
         with:
           files: src/
+      - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - run: npm test
+      env:
+        CI: true
+    - run: npm run build --if-present
