@@ -37,7 +37,7 @@ export class GermanyService {
 							url: `${requestUrl}?${params.toString()}`,
 							status: response.error.code,
 							statusText: response.error.message,
-							error: response.error.details
+							error: response.error.details.toString()
 						});
 					}
 					if (response.features && Array.isArray(response.features) && response.features.length > 0) {
@@ -90,7 +90,7 @@ export class GermanyService {
 							url: `${requestUrl}?${params.toString()}`,
 							status: response.error.code,
 							statusText: response.error.message,
-							error: response.error.details
+							error: response.error.details.toString()
 						});
 					}
 					if (response.features && Array.isArray(response.features) && response.features.length > 0) {

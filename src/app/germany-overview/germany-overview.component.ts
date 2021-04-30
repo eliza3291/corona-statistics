@@ -29,9 +29,9 @@ export class GermanyOverviewComponent implements OnInit {
 	constructor(private germanyService: GermanyService, private alertService: AlertService) {
 		this.timeframe = TIMEFRAME[0];
 		this.germanyTitle = 'Germany';
-		this.selectedState = Object.create(null);
+		this.selectedState = Object.create({}) as State;
 
-		this.dataTotals = Object.create(null);
+		this.dataTotals = Object.create({}) as Data;
 		this.timeseriesCases = new LineChart();
 		this.timeseriesDeaths = new LineChart();
 		this.timeseriesRecovered = new LineChart();
@@ -79,7 +79,7 @@ export class GermanyOverviewComponent implements OnInit {
 	 * Reset data when error on requests.
 	 */
 	resetData(): void {
-		this.dataTotals = Object.create(null);
+		this.dataTotals = Object.create({}) as Data;
 		this.timeseriesCases = new LineChart();
 		this.timeseriesDeaths = new LineChart();
 		this.timeseriesRecovered = new LineChart();

@@ -7,7 +7,7 @@ export interface CustomAppError {
 	code?: number;
 	name?: string;
 	message: string;
-	details: any;
+	details?: string;
 }
 
 export class AppError extends Error {
@@ -21,7 +21,7 @@ export class AppError extends Error {
 	constructor(message: string) {
 		super(message);
 		this.name = 'AppError';
-		this.appError = Object.create(null);
+		this.appError = Object.create({}) as CustomAppError;
 		this.translatedMessage = message;
 	}
 
@@ -41,7 +41,7 @@ export class AppError extends Error {
 		newAppError.appError = {
 			code: error.status,
 			message: error.statusText,
-			details: error.error
+			details: (error.error as Error).message
 		};
 		newAppError.url = error.url || undefined;
 		newAppError.translatedMessage = newAppError.getMessageFromCode(error.status) || error.statusText;

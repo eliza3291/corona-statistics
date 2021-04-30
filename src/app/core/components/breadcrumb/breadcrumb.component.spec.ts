@@ -3,13 +3,14 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { BreadcrumbComponent } from './breadcrumb.component';
 import { of } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, PRIMARY_OUTLET, Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { By, Title } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
 describe('BreadcrumbComponent', () => {
 	let component: BreadcrumbComponent;
 	let fixture: ComponentFixture<BreadcrumbComponent>;
 	let titleService: Title;
-	let router: Router;
+	let debugElement: DebugElement;
 
 	const activatedRouteMock = {
 		firstChild: null,
@@ -19,18 +20,17 @@ describe('BreadcrumbComponent', () => {
 		})
 	};
 
-	const MockRouter = {
-		url: '/overview',
-		events: of(new NavigationEnd(0, 'http://localhost:4200/overview', 'http://localhost:4200/overview')),
-		navigate: jasmine.createSpy('navigate')
-	};
-
 	beforeEach(async () => {
-		TestBed.configureTestingModule({
+		const mockRouter = {
+			url: '/overview',
+			events: of(new NavigationEnd(0, 'http://localhost:4200/overview', 'http://localhost:4200/overview')),
+			navigate: jasmine.createSpy('navigate')
+		};
+		await TestBed.configureTestingModule({
 			declarations: [BreadcrumbComponent],
 			providers: [
 				{ provide: ActivatedRoute, useValue: activatedRouteMock },
-				{ provide: Router, useValue: MockRouter },
+				{ provide: Router, useValue: mockRouter },
 				{ provide: Title, useClass: Title }
 			],
 			imports: [RouterTestingModule]
@@ -38,8 +38,8 @@ describe('BreadcrumbComponent', () => {
 			.compileComponents()
 			.then(() => {
 				fixture = TestBed.createComponent(BreadcrumbComponent);
-				router = TestBed.inject(Router);
 				titleService = TestBed.inject(Title);
+				debugElement = fixture.debugElement;
 				component = fixture.componentInstance;
 			});
 	});
@@ -58,7 +58,8 @@ describe('BreadcrumbComponent', () => {
 
 	it('should render breadcrumb', () => {
 		fixture.detectChanges();
-		const compiled = fixture.nativeElement;
-		expect(compiled.querySelector('.page-title').textContent).toContain('Overview');
+		const htmlElement = debugElement.query(By.css('.page-title')).nativeElement as HTMLElement;
+
+		expect(htmlElement.textContent).toContain('Overview');
 	});
 });

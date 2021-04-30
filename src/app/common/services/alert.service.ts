@@ -8,8 +8,6 @@ import { Alert, AlertType } from '../models';
 export class AlertService {
 	private alertSubject = new Subject<Alert>();
 
-	constructor() {}
-
 	error(message: string): void {
 		this.alertSubject.next({ type: AlertType.DANGER, text: message });
 	}

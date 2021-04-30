@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { STATES, State } from '@common';
 
 @Component({
@@ -12,17 +12,20 @@ export class GermanyMapComponent {
 
 	@Output() elementOnClick: EventEmitter<State> = new EventEmitter<State>();
 
-	public svgPaths: State[] = STATES;
-	public pathSelected: State = Object.create(null);
+	public svgPaths: State[];
+	public pathSelected: State;
 
-	constructor() {}
+	constructor() {
+		this.svgPaths = STATES;
+		this.pathSelected = Object.create({}) as State;
+	}
 
-	onClick(event: any, state: State = Object.create(null)): void {
+	onClick(event: MouseEvent, state?: State): void {
 		event.stopPropagation();
-		if (state.id) {
-			this.pathSelected = this.pathSelected.id === state.id ? Object.create(null) : state;
+		if (state && this.pathSelected.id !== state.id) {
+			this.pathSelected = state;
 		} else {
-			this.pathSelected = Object.create(null);
+			this.pathSelected = Object.create({}) as State;
 		}
 		this.elementOnClick.emit(this.pathSelected);
 	}

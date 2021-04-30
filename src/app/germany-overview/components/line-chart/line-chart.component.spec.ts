@@ -5,6 +5,7 @@ import { LINECHART_MOCK } from '@common';
 import { LineChartModule } from '@swimlane/ngx-charts';
 import { ResponsiveWidthModule } from '@common';
 import { LineChartComponent } from './line-chart.component';
+import { By } from '@angular/platform-browser';
 
 describe('LineChartComponent', () => {
 	let component: LineChartComponent;
@@ -30,20 +31,25 @@ describe('LineChartComponent', () => {
 	});
 
 	it('not show ngx-charts-line-chart when results lenght == 0', () => {
-		const chart = debugElement.nativeElement.querySelectorAll('ngx-charts-line-charts');
+		const chart = debugElement.queryAll(By.css('ngx-charts-line-charts'));
+
 		expect(chart.length).toBe(0);
 	});
 
 	it(
 		'show ngx-charts-line-chart when results lenght > 0',
 		waitForAsync(() => {
-			let chart: NodeList;
+			let chart: DebugElement[];
 			component.results = LINECHART_MOCK;
 			fixture.detectChanges();
-			fixture.whenStable().then(() => {
-				chart = debugElement.nativeElement.querySelectorAll('ngx-charts-line-charts');
-				expect(chart).toBeTruthy();
-			});
+			fixture
+				.whenStable()
+				.then(() => {
+					chart = debugElement.queryAll(By.css('ngx-charts-line-charts'));
+
+					expect(chart).toBeTruthy();
+				})
+				.catch(() => fail('Mandatory catch'));
 		})
 	);
 
@@ -51,9 +57,10 @@ describe('LineChartComponent', () => {
 		component.results = LINECHART_MOCK;
 		fixture.detectChanges();
 		// Overwrite innerWidth with new property
-		(window as any).innerWidth = 630;
+		viewport.set(630);
 		window.dispatchEvent(new Event('resize'));
-		expect(component.viewWidth).toBe(1680);
+
+		expect(component.viewWidth).toBe(980);
 	});
 
 	it('test yAxisFormatting: when value = 0.8 return ""', () => {

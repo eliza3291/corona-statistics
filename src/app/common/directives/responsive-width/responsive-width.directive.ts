@@ -6,7 +6,7 @@ import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular
 export class ResponsiveWidthDirective implements OnChanges {
 	@Input() appResponsiveWidth?: number;
 
-	constructor(private elmRef: ElementRef) {}
+	constructor(private elmRef: ElementRef<HTMLElement>) {}
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes.appResponsiveWidth && typeof this.appResponsiveWidth !== 'undefined') {
