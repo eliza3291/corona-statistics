@@ -21,7 +21,8 @@ describe('ResponsiveWidthDirective', () => {
 	});
 
 	it('should have one div with the directive', () => {
-		const div = fixture.debugElement.queryAll(By.directive(ResponsiveWidthDirective));
+		const div = debugElement.queryAll(By.directive(ResponsiveWidthDirective));
+
 		expect(div.length).toBe(1);
 	});
 
@@ -29,17 +30,17 @@ describe('ResponsiveWidthDirective', () => {
 		component.viewWidth = 500;
 		fixture.detectChanges();
 
-		const div = fixture.debugElement.query(By.directive(ResponsiveWidthDirective));
+		const div = debugElement.query(By.directive(ResponsiveWidthDirective)).nativeElement as HTMLElement;
 
-		expect(div.nativeElement.style.width).toBe('500px');
+		expect(div.style.width).toBe('500px');
 	});
 
 	it('should set unset value to width when 0', () => {
 		component.viewWidth = 0;
 		fixture.detectChanges();
 
-		const div = fixture.debugElement.query(By.directive(ResponsiveWidthDirective));
+		const div = debugElement.query(By.directive(ResponsiveWidthDirective)).nativeElement as HTMLElement;
 
-		expect(div.nativeElement.style.width).toBe('unset');
+		expect(div.style.width).toBe('unset');
 	});
 });

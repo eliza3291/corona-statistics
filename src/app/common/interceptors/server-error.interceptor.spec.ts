@@ -2,8 +2,6 @@ import { HttpErrorResponse, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { getTestBed, TestBed } from '@angular/core/testing';
 import { environment } from '@environment';
-import { of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { GermanyService } from '../services';
 import { getDateBefore } from '../utils';
 
@@ -40,18 +38,16 @@ describe('ServerErrorInterceptor', () => {
 
 	it('getTimeseriesGermany should retry when error 404', () => {
 		const days = 1;
-		service
-			.getTimeseriesGermany(days)
-			.pipe(
-				catchError((error) => {
-					// Pass error for test proposes
-					return of(error);
-				})
-			)
-			.subscribe((value) => {
-				expect(value.status).toBe(404);
-				expect(value).toBeTruthy();
-			});
+		service.getTimeseriesGermany(days).subscribe(
+			() => {
+				fail('should have failed with the 404 error');
+			},
+			(error: HttpErrorResponse) => {
+				expect(error.status).toBe(404);
+
+				expect(error).toBeTruthy();
+			}
+		);
 
 		const startDate = getDateBefore(days);
 
@@ -71,7 +67,9 @@ describe('ServerErrorInterceptor', () => {
 		while (count < retry + 1) {
 			count++;
 			const req = httpMock.expectOne(urlRequest);
+
 			expect(req.request.method).toBe('GET');
+
 			expect(req.request.url).toBe(`${environment.arcgisCoronaGermany.url}`);
 			req.flush('Not Found', { status: 404, statusText: 'Not Found' });
 		}
@@ -80,18 +78,16 @@ describe('ServerErrorInterceptor', () => {
 	it('getTimeseriesState retry when error 404', () => {
 		const idState = 1;
 		const days = 1;
-		service
-			.getTimeseriesState(idState, days)
-			.pipe(
-				catchError((error) => {
-					// Pass error for test proposes
-					return of(error);
-				})
-			)
-			.subscribe((value) => {
-				expect(value.status).toBe(404);
-				expect(value).toBeTruthy();
-			});
+		service.getTimeseriesState(idState, days).subscribe(
+			() => {
+				fail('should have failed with the 404 error');
+			},
+			(error: HttpErrorResponse) => {
+				expect(error.status).toBe(404);
+
+				expect(error).toBeTruthy();
+			}
+		);
 
 		const startDate = getDateBefore(days);
 
@@ -111,6 +107,7 @@ describe('ServerErrorInterceptor', () => {
 		while (count < retry + 1) {
 			count++;
 			const req = httpMock.expectOne(urlRequest);
+
 			expect(req.request.method).toBe('GET');
 			expect(req.request.url).toBe(`${environment.arcgisCoronaGermany.url}`);
 			req.flush('Not Found', { status: 404, statusText: 'Not Found' });

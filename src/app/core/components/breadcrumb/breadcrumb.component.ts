@@ -10,8 +10,9 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 	encapsulation: ViewEncapsulation.None
 })
 export class BreadcrumbComponent {
-	pageInfo: Data = Object.create(null);
+	pageInfo: Data;
 	constructor(private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
+		this.pageInfo = Object.create({}) as Data;
 		this.router.events
 			.pipe(filter((event) => event instanceof NavigationEnd))
 			.pipe(map(() => this.activatedRoute))

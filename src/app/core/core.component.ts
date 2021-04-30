@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
 	selector: 'app-core',
@@ -7,8 +7,6 @@ import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/cor
 	encapsulation: ViewEncapsulation.None
 })
 export class CoreComponent {
-	constructor() {}
-
 	options = {
 		theme: 'light',
 		dir: 'ltr',

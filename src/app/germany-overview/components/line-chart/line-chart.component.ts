@@ -37,7 +37,7 @@ export class LineChartComponent {
 	 * Update width of chart container when the window is resized
 	 */
 	@HostListener('window:resize', ['$event'])
-	onResize(event: any): void {
+	onResize(): void {
 		this.setViewWidth();
 	}
 

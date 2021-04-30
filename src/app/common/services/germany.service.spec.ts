@@ -13,8 +13,7 @@ import {
 } from '../mocks';
 import { environment } from '@environment';
 import { getDateBefore } from '../utils';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 describe('GermanyService', () => {
 	let injector: TestBed;
@@ -55,24 +54,22 @@ describe('GermanyService', () => {
 		const urlRequest = encodeURI(`${environment.arcgisCoronaGermany.url}?${params.join('&')}`);
 
 		const req = httpMock.expectOne(urlRequest);
+
 		expect(req.request.method).toBe('GET');
 		expect(req.request.url).toBe(`${environment.arcgisCoronaGermany.url}`);
 		req.flush(RESPONSE_GERMANY_DATA);
 	});
 
 	it('getTimeseriesGermany should throw HttpErrorResponse code 404', () => {
-		service
-			.getTimeseriesGermany(1)
-			.pipe(
-				catchError((error) => {
-					// Pass error for test proposes
-					return of(error);
-				})
-			)
-			.subscribe((value) => {
-				expect(value.status).toBe(404);
-				expect(value).toBeTruthy();
-			});
+		service.getTimeseriesGermany(1).subscribe(
+			() => {
+				fail('should have failed with the 404 error');
+			},
+			(error: HttpErrorResponse) => {
+				expect(error.status).toBe(404);
+				expect(error).toBeTruthy();
+			}
+		);
 
 		const startDate = getDateBefore(1);
 
@@ -87,41 +84,28 @@ describe('GermanyService', () => {
 		const urlRequest = encodeURI(`${environment.arcgisCoronaGermany.url}?${params.join('&')}`);
 
 		const req = httpMock.expectOne(urlRequest);
+
 		expect(req.request.method).toBe('GET');
 		expect(req.request.url).toBe(`${environment.arcgisCoronaGermany.url}`);
 		req.flush(RESPONSE_NO_DATA);
 	});
 
 	it('getTimeseriesGermany should throw HttpErrorResponse code 400', () => {
-		service
-			.getTimeseriesGermany(7)
-			.pipe(
-				catchError((error) => {
-					// Pass error for test proposes
-					return of(error);
-				})
-			)
-			.subscribe((value) => {
-				expect(value.status).toBe(400);
-				expect(value).toBeTruthy();
-			});
-
-		const startDate = getDateBefore(7);
-
-		const params = [
-			`where=(NeuerFall IN(1,0) OR NeuerTodesfall IN(1,0,-9) OR NeuGenesen IN(1,0,-9)) AND MeldeDatum >= TIMESTAMP '${startDate}'`,
-			'outStatistics=[{"statisticType":"WRONG_TYPE","onStatisticField":"AnzahlFall","outStatisticFieldName":"cases"},{"statisticType":"sum","onStatisticField":"AnzahlTodesfall","outStatisticFieldName":"deaths"},{"statisticType":"sum","onStatisticField":"AnzahlGenesen","outStatisticFieldName":"recovered"},{"statisticType":"max","onStatisticField":"MeldeDatum","outStatisticFieldName":"date"}]',
-			'groupByFieldsForStatistics=MeldeDatum',
-			'orderByFields=MeldeDatum',
-			'f=json'
-		];
-
-		const urlRequest = encodeURI(`${environment.arcgisCoronaGermany.url}?${params.join('&')}`);
+		service.getTimeseriesGermany(7).subscribe(
+			() => {
+				fail('should have failed with the 400 error');
+			},
+			(error: HttpErrorResponse) => {
+				expect(error.status).toBe(400);
+				expect(error).toBeTruthy();
+			}
+		);
 
 		const req = httpMock.expectOne((r) => {
 			// Check only url to check Error 400
 			return r.url === `${environment.arcgisCoronaGermany.url}`;
 		});
+
 		expect(req.request.method).toBe('GET');
 		req.flush(RESPONSE_BAD_REQUEST_DATA);
 	});
@@ -149,6 +133,7 @@ describe('GermanyService', () => {
 		const urlRequest = encodeURI(`${environment.arcgisCoronaStates.url}?${params.join('&')}`);
 
 		const req = httpMock.expectOne(urlRequest);
+
 		expect(req.request.method).toBe('GET');
 		expect(req.request.url).toBe(`${environment.arcgisCoronaStates.url}`);
 		req.flush(RESPONSE_STATE_DATA);
@@ -157,18 +142,15 @@ describe('GermanyService', () => {
 	it('getTimeseriesState should throw HttpErrorResponse code 404', () => {
 		const idState = 1;
 		const days = 1;
-		service
-			.getTimeseriesState(idState, days)
-			.pipe(
-				catchError((error) => {
-					// Pass error for test proposes
-					return of(error);
-				})
-			)
-			.subscribe((value) => {
-				expect(value.status).toBe(404);
-				expect(value).toBeTruthy();
-			});
+		service.getTimeseriesState(idState, days).subscribe(
+			() => {
+				fail('should have failed with the 404 error');
+			},
+			(error: HttpErrorResponse) => {
+				expect(error.status).toBe(404);
+				expect(error).toBeTruthy();
+			}
+		);
 
 		const startDate = getDateBefore(days);
 
@@ -183,6 +165,7 @@ describe('GermanyService', () => {
 		const urlRequest = encodeURI(`${environment.arcgisCoronaStates.url}?${params.join('&')}`);
 
 		const req = httpMock.expectOne(urlRequest);
+
 		expect(req.request.method).toBe('GET');
 		expect(req.request.url).toBe(`${environment.arcgisCoronaStates.url}`);
 		req.flush(RESPONSE_NO_DATA);
@@ -191,33 +174,21 @@ describe('GermanyService', () => {
 	it('getTimeseriesState should throw HttpErrorResponse code 400', () => {
 		const idState = 1;
 		const days = 1;
-		service
-			.getTimeseriesState(idState, days)
-			.pipe(
-				catchError((error) => {
-					// Pass error for test proposes
-					return of(error);
-				})
-			)
-			.subscribe((value) => {
-				expect(value.status).toBe(400);
-				expect(value).toBeTruthy();
-			});
-
-		const startDate = getDateBefore(days);
-
-		const params = [
-			`where=(NeuerFall IN(1,0) OR NeuerTodesfall IN(1,0,-9) OR NeuGenesen IN(1,0,-9)) AND MeldeDatum >= TIMESTAMP '${startDate}' AND IdBundesland = ${idState}`,
-			'outStatistics=[{"statisticType":"WRONG_TYPE","onStatisticField":"AnzahlFall","outStatisticFieldName":"cases"},{"statisticType":"sum","onStatisticField":"AnzahlTodesfall","outStatisticFieldName":"deaths"},{"statisticType":"sum","onStatisticField":"AnzahlGenesen","outStatisticFieldName":"recovered"},{"statisticType":"max","onStatisticField":"MeldeDatum","outStatisticFieldName":"date"}]',
-			'groupByFieldsForStatistics=IdBundesland,MeldeDatum,Bundesland',
-			'orderByFields=IdBundesland,MeldeDatum',
-			'f=json'
-		];
+		service.getTimeseriesState(idState, days).subscribe(
+			() => {
+				fail('should have failed with the 400 error');
+			},
+			(error: HttpErrorResponse) => {
+				expect(error.status).toBe(400);
+				expect(error).toBeTruthy();
+			}
+		);
 
 		const req = httpMock.expectOne((r) => {
 			// Check only url to check Error 400
 			return r.url === `${environment.arcgisCoronaGermany.url}`;
 		});
+
 		expect(req.request.method).toBe('GET');
 		req.flush(RESPONSE_BAD_REQUEST_DATA);
 	});

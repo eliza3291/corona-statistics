@@ -27,7 +27,8 @@ describe('GermanyMapComponent', () => {
 	});
 
 	it('should render 16 states', () => {
-		const states = debugElement.nativeElement.querySelectorAll('.land');
+		const states = debugElement.queryAll(By.css('.land'));
+
 		expect(states.length).toBeTruthy(16);
 	});
 
@@ -42,7 +43,8 @@ describe('GermanyMapComponent', () => {
 
 		fixture.detectChanges();
 
-		const stateSH = debugElement.query(By.css('.land[id="1"]'));
-		expect(stateSH.classes.active).toBeTruthy();
+		const stateSH = debugElement.query(By.css('.land[id="1"]')).nativeElement as HTMLElement;
+
+		expect(stateSH.classList).toContain('active');
 	});
 });
