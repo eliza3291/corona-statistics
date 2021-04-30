@@ -16,6 +16,7 @@ jobs:
         run: npm test
         env:
           CI: true
-      - run: npm run build:production:compress
+      - name: Build Production Compressed
+        run: npm run build:production:compress
         env:
           CI: true
