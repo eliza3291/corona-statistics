@@ -9,7 +9,7 @@ jobs:
         with:
           node-version: 12.x
       - name: ESLint Checker
-        run: eslint . --ext .scss,.js,.html,.json,.ico,.svg
+        uses: stefanoeb/eslint-action@1.0.2
       - name: Build Production
         run: npm run build:production
       - name: Test
