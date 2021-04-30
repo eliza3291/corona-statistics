@@ -9,12 +9,12 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, CoreModule],
-  providers: [
-    { provide: ErrorHandler, useClass: GlobalErrorHandler },
-    { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true }
-  ],
-  bootstrap: [AppComponent]
+	declarations: [AppComponent],
+	imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, CoreModule],
+	providers: [
+		{ provide: ErrorHandler, useClass: GlobalErrorHandler },
+		{ provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true }
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule {}

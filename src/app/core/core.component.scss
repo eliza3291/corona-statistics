@@ -8,21 +8,21 @@
  ============================================================== */
 
 #main-wrapper {
-  width: 100%;
-  overflow: hidden;
+	width: 100%;
+	overflow: hidden;
 }
 
 .page-wrapper {
-  background: $body-bg;
-  position: relative;
-  transition: 0.2s ease-in;
-  margin-left: auto;
-  margin-right: auto;
+	background: $body-bg;
+	position: relative;
+	transition: 0.2s ease-in;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .page-wrapper > .container-fluid {
-  padding: 20px;
-  min-height: calc(100vh - 180px);
+	padding: 20px;
+	min-height: calc(100vh - 180px);
 }
 
 /*******************
@@ -30,21 +30,21 @@ Responsive Container
 *******************/
 
 @include media-breakpoint-up(md) {
-  .page-wrapper {
-    max-width: 750px !important;
-  }
+	.page-wrapper {
+		max-width: 750px !important;
+	}
 }
 
 @include media-breakpoint-up(lg) {
-  .page-wrapper {
-    max-width: 970px !important;
-  }
+	.page-wrapper {
+		max-width: 970px !important;
+	}
 }
 
 @include media-breakpoint-up(xl) {
-  .page-wrapper {
-    max-width: 1100px !important;
-  }
+	.page-wrapper {
+		max-width: 1100px !important;
+	}
 }
 
 /*******************
@@ -52,7 +52,7 @@ Footer
 *******************/
 
 .footer {
-  padding: 15px 20px;
+	padding: 15px 20px;
 }
 
 /*******************
@@ -60,79 +60,79 @@ Vertical layout
 *******************/
 
 #main-wrapper[data-layout='vertical'] {
-  /*Vertical*/
-  .topbar .top-navbar .navbar-header {
-    //width: $sidebar-width-full;
-    box-shadow: $shadow;
-    transition: 0.2s ease-in;
-  }
+	/*Vertical*/
+	.topbar .top-navbar .navbar-header {
+		//width: $sidebar-width-full;
+		box-shadow: $shadow;
+		transition: 0.2s ease-in;
+	}
 }
 
 /*******************
  Theme colors
  ******************/
 #main-wrapper {
-  &[data-layout='vertical'] {
-    /*This is for the logo bg*/
-    .topbar .top-navbar .navbar-header {
-      &[data-logobg='skin1'] {
-        background: $skin1;
-      }
-      &[data-logobg='skin2'] {
-        background: $skin2;
-      }
-      &[data-logobg='skin3'] {
-        background: $skin3;
-      }
-      &[data-logobg='skin4'] {
-        background: $skin4;
-      }
-      &[data-logobg='skin5'] {
-        background: $skin5;
-      }
-    }
-    .topbar .navbar-collapse,
-    .topbar {
-      &[data-navbarbg='skin1'] {
-        background: $skin1;
-      }
-      &[data-navbarbg='skin2'] {
-        background: $skin2;
-      }
-      &[data-navbarbg='skin3'] {
-        background: $skin3;
-      }
-      &[data-navbarbg='skin4'] {
-        background: $skin4;
-      }
-      &[data-navbarbg='skin5'] {
-        background: $skin5;
-      }
-    }
-    /*This is for the sidebar bg*/
-    .left-sidebar {
-      &[data-sidebarbg='skin1'],
-      &[data-sidebarbg='skin1'] ul {
-        background: $skin1;
-      }
-      &[data-sidebarbg='skin2'],
-      &[data-sidebarbg='skin2'] ul {
-        background: $skin2;
-      }
-      &[data-sidebarbg='skin3'],
-      &[data-sidebarbg='skin3'] ul {
-        background: $skin3;
-      }
-      &[data-sidebarbg='skin4'],
-      &[data-sidebarbg='skin4'] ul {
-        background: $skin4;
-      }
-      &[data-sidebarbg='skin5'],
-      &[data-sidebarbg='skin5'] ul {
-        background: $skin5;
-      }
-    }
-  }
+	&[data-layout='vertical'] {
+		/*This is for the logo bg*/
+		.topbar .top-navbar .navbar-header {
+			&[data-logobg='skin1'] {
+				background: $skin1;
+			}
+			&[data-logobg='skin2'] {
+				background: $skin2;
+			}
+			&[data-logobg='skin3'] {
+				background: $skin3;
+			}
+			&[data-logobg='skin4'] {
+				background: $skin4;
+			}
+			&[data-logobg='skin5'] {
+				background: $skin5;
+			}
+		}
+		.topbar .navbar-collapse,
+		.topbar {
+			&[data-navbarbg='skin1'] {
+				background: $skin1;
+			}
+			&[data-navbarbg='skin2'] {
+				background: $skin2;
+			}
+			&[data-navbarbg='skin3'] {
+				background: $skin3;
+			}
+			&[data-navbarbg='skin4'] {
+				background: $skin4;
+			}
+			&[data-navbarbg='skin5'] {
+				background: $skin5;
+			}
+		}
+		/*This is for the sidebar bg*/
+		.left-sidebar {
+			&[data-sidebarbg='skin1'],
+			&[data-sidebarbg='skin1'] ul {
+				background: $skin1;
+			}
+			&[data-sidebarbg='skin2'],
+			&[data-sidebarbg='skin2'] ul {
+				background: $skin2;
+			}
+			&[data-sidebarbg='skin3'],
+			&[data-sidebarbg='skin3'] ul {
+				background: $skin3;
+			}
+			&[data-sidebarbg='skin4'],
+			&[data-sidebarbg='skin4'] ul {
+				background: $skin4;
+			}
+			&[data-sidebarbg='skin5'],
+			&[data-sidebarbg='skin5'] ul {
+				background: $skin5;
+			}
+		}
+	}
 }
 
 /*******************
@@ -140,35 +140,35 @@ Vertical layout
 *******************/
 
 .topbar {
-  position: relative;
-  z-index: 50;
-  transition: $transitions;
-  background: $topbar;
-  height: $topbar-height;
-  .top-navbar {
-    min-height: $topbar-height;
-    padding: 0px;
-    .navbar-header {
-      line-height: $topbar-navlink-height;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      justify-content: space-around;
-      .navbar-brand {
-        display: flex;
-        align-items: center;
-        margin: 0px;
-        padding: $topbar-navbrand-padding;
-        .dark-logo {
-          display: none;
-        }
-        .logo-icon {
-          margin-right: 5px;
-          img.light-logo {
-            max-height: 40px;
-          }
-        }
-      }
-    }
-  }
+	position: relative;
+	z-index: 50;
+	transition: $transitions;
+	background: $topbar;
+	height: $topbar-height;
+	.top-navbar {
+		min-height: $topbar-height;
+		padding: 0px;
+		.navbar-header {
+			line-height: $topbar-navlink-height;
+			display: flex;
+			align-items: center;
+			width: 100%;
+			justify-content: space-around;
+			.navbar-brand {
+				display: flex;
+				align-items: center;
+				margin: 0px;
+				padding: $topbar-navbrand-padding;
+				.dark-logo {
+					display: none;
+				}
+				.logo-icon {
+					margin-right: 5px;
+					img.light-logo {
+						max-height: 40px;
+					}
+				}
+			}
+		}
+	}
 }

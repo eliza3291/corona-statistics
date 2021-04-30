@@ -1,27 +1,27 @@
 <div class="row justify-content-center align-items-center">
-  <div class="col-auto">
-    <button
-      type="button"
-      class="btn btn-link"
-      [ngClass]="selectedTimeframeIndex > 0 ? '' : 'invisible'"
-      (click)="onBack()"
-    >
-      <i class="fas fa-chevron-left"></i>
-    </button>
-  </div>
+	<div class="col-auto">
+		<button
+			type="button"
+			class="btn btn-link"
+			[ngClass]="selectedTimeframeIndex > 0 ? '' : 'invisible'"
+			(click)="onBack()"
+		>
+			<i class="fas fa-chevron-left"></i>
+		</button>
+	</div>
 
-  <div class="col-auto">
-    <span class="h4 text-capitalize">{{ selectedTimeframe.name }}</span>
-  </div>
+	<div class="col-auto">
+		<span class="h4 text-capitalize">{{ selectedTimeframe.name }}</span>
+	</div>
 
-  <div class="col-auto">
-    <button
-      type="button"
-      class="btn btn-link"
-      [ngClass]="selectedTimeframeIndex === timeframeData.length - 1 ? 'invisible' : ''"
-      (click)="onNext()"
-    >
-      <i class="fas fa-chevron-right"></i>
-    </button>
-  </div>
+	<div class="col-auto">
+		<button
+			type="button"
+			class="btn btn-link"
+			[ngClass]="selectedTimeframeIndex === timeframeData.length - 1 ? 'invisible' : ''"
+			(click)="onNext()"
+		>
+			<i class="fas fa-chevron-right"></i>
+		</button>
+	</div>
 </div>

@@ -5,14 +5,14 @@ import { catchError, retry } from 'rxjs/operators';
 
 @Injectable()
 export class ServerErrorInterceptor implements HttpInterceptor {
-  constructor() {}
+	constructor() {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request).pipe(
-      retry(1),
-      catchError((error: HttpErrorResponse) => {
-        return throwError(error);
-      })
-    );
-  }
+	intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+		return next.handle(request).pipe(
+			retry(1),
+			catchError((error: HttpErrorResponse) => {
+				return throwError(error);
+			})
+		);
+	}
 }
