@@ -3,6 +3,9 @@ on: [pull_request]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -10,10 +13,10 @@ jobs:
         uses: stefanoeb/eslint-action@1.0.2
         with:
           files: src/
-      - name: Use Node.js 12.x
+      - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
-        node-version: 12.x
+        node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm test
       env:
