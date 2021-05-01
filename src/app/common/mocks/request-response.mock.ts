@@ -1,5 +1,6 @@
 import { QueryResponse } from '../models';
 
+/** Example of the response from the endpoint for Germany */
 export const RESPONSE_GERMANY_DATA: QueryResponse = {
 	objectIdFieldName: 'ObjectId',
 	uniqueIdField: {
@@ -62,6 +63,7 @@ export const RESPONSE_GERMANY_DATA: QueryResponse = {
 	]
 };
 
+/** Example of the response from the endpoint for the state with id 1 */
 export const RESPONSE_STATE_DATA: QueryResponse = {
 	objectIdFieldName: 'ObjectId',
 	uniqueIdField: { name: 'ObjectId', isSystemMaintained: true },
@@ -202,10 +204,12 @@ export const RESPONSE_STATE_DATA: QueryResponse = {
 	]
 };
 
+/** Example of the response from the endpoint when a bad request was made */
 export const RESPONSE_BAD_REQUEST_DATA: QueryResponse = {
 	error: { code: 400, message: '', details: ['"outStatistics" parameter is invalid'] }
 };
 
+/** Example of the response from the endpoint when no data found */
 export const RESPONSE_NO_DATA: QueryResponse = {
 	objectIdFieldName: 'ObjectId',
 	uniqueIdField: { name: 'ObjectId', isSystemMaintained: true },

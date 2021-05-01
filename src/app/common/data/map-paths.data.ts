@@ -1,5 +1,6 @@
 import { State } from '../models/map.model';
 
+/** SVG Path for every state of Germany */
 export const STATES: State[] = [
 	{
 		id: 1,

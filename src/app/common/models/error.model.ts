@@ -1,19 +1,17 @@
 import { HttpErrorResponse } from '@angular/common/http';
 
-/**
- * Merge response model from API with Error lib model
- */
+/** Merge response model from API with Error lib model */
 export interface CustomAppError {
 	code?: number;
 	name?: string;
 	message: string;
+	/** Further information about the error. */
 	details?: string;
 }
 
+/** Errors from the app, convert all error to same class */
 export class AppError extends Error {
-	/**
-	 * Save complete url can be helpful to fix errors.
-	 */
+	/** Save url can be helpful to fix errors. */
 	public url?: string;
 	public appError: CustomAppError;
 	public translatedMessage: string;
@@ -25,6 +23,7 @@ export class AppError extends Error {
 		this.translatedMessage = message;
 	}
 
+	/** Initialize AppError from Error */
 	static initializeError(error: Error): AppError {
 		const newAppError = new AppError(error.message);
 		newAppError.appError = {
@@ -36,6 +35,7 @@ export class AppError extends Error {
 		return newAppError;
 	}
 
+	/** Initialize AppError from HttpErrorResponse */
 	static initializeHttpResponseError(error: HttpErrorResponse): AppError {
 		const newAppError = new AppError(error.message);
 		newAppError.appError = {
@@ -47,9 +47,8 @@ export class AppError extends Error {
 		newAppError.translatedMessage = newAppError.getMessageFromCode(error.status) || error.statusText;
 		return newAppError;
 	}
-	/**
-	 * Write user friendly messages for the possible error codes
-	 */
+
+	/** Write user friendly messages for the possible error codes */
 	getMessageFromCode(code: number): string | undefined {
 		if (!navigator.onLine) {
 			return 'Hey! You are offline. Please check your internet connection and reload the page.';

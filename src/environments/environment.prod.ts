@@ -1,3 +1,7 @@
+/**
+ * Production environment.
+ * Definition of the require endpoints for the requests.
+ */
 export const environment = {
 	production: true,
 	arcgisCoronaGermany: {

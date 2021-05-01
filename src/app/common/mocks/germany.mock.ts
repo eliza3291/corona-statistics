@@ -1,5 +1,6 @@
 import { Timeseries, TimeseriesState } from '../models';
 
+/** Example of a mapped response from the endpoint with the data of Germany */
 export const MAPPED_GERMANY_RESPONSE: Timeseries = Timeseries.initializeClass([
 	{
 		cases: 12343,
@@ -50,7 +51,7 @@ export const MAPPED_GERMANY_RESPONSE: Timeseries = Timeseries.initializeClass([
 		date: 'April 26'
 	}
 ]);
-
+/** Example of a mapped response from the endpoint with the data of the state with id 1*/
 export const MAPPED_STATE_RESPONSE: TimeseriesState = TimeseriesState.initializeClass(1, [
 	{
 		cases: 260,

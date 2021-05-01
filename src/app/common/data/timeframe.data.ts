@@ -1,5 +1,6 @@
 import { Timeframe } from '../models';
 
+/** Default list of available timeframes */
 export const TIMEFRAME: Timeframe[] = [
 	{
 		id: 'lastWeek',

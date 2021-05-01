@@ -2,6 +2,10 @@ import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/
 import { LineChart } from '@common';
 import { DEFAULT_ITEM_WIDTH, ITEMS_PER_BREAKPOINT } from 'src/app/common/data/line-chart.data';
 
+/**
+ * Render line chart from the Ngx Charts library
+ * For allow changes in chart options, more inputs can be defined.
+ */
 @Component({
 	selector: 'app-line-chart',
 	templateUrl: './line-chart.component.html',
