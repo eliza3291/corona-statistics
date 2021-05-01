@@ -25,6 +25,8 @@ Note: For more information check the scripts inside package.
 
 Run `npm run compodoc` to generate a the project documentation using Compodoc.
 
+Note: Go to the repo [Corona Doc](https://github.com/eliza3291/corona-statistics-doc) to see the result and further information.
+
 ## Tests
 
 Run `npm run test` will check lint and prettier format before running all unit tests.
