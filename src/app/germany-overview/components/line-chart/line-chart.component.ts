@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { LineChart } from '@common';
 import { DEFAULT_ITEM_WIDTH, ITEMS_PER_BREAKPOINT } from 'src/app/common/data/line-chart.data';
 
@@ -8,6 +8,8 @@ import { DEFAULT_ITEM_WIDTH, ITEMS_PER_BREAKPOINT } from 'src/app/common/data/li
 	styleUrls: ['./line-chart.component.scss']
 })
 export class LineChartComponent {
+	@ViewChild('lineChartContainer') lineChartContainer?: ElementRef<HTMLElement>;
+
 	@Input() set lineChartData(data: LineChart) {
 		this.results = data;
 		this.setViewWidth();
@@ -39,6 +41,21 @@ export class LineChartComponent {
 	@HostListener('window:resize', ['$event'])
 	onResize(): void {
 		this.setViewWidth();
+	}
+
+	/**
+	 * NgxCharts is not hidding the Tooltip when scrolling.
+	 * Issue Open: https://github.com/swimlane/ngx-charts/issues/1039#issue-380474141
+	 * To fix it: the next function is triggering the event mouseleave which hide the tooltip when the user is scrolling.
+	 * Two types of tooltip are inside the chart (Series and specific selection of a point)
+	 */
+	@HostListener('window:scroll') onScroll(): void {
+		const mouseleave = new MouseEvent('mouseleave', { bubbles: true, cancelable: true });
+		const containerElement = this.lineChartContainer?.nativeElement;
+		const tooltipAreaSerie = containerElement?.querySelector('.tooltip-area') as HTMLElement;
+		const tooltipAreaCircle = containerElement?.querySelector('circle');
+		tooltipAreaSerie?.dispatchEvent(mouseleave);
+		tooltipAreaCircle?.dispatchEvent(mouseleave);
 	}
 
 	/**

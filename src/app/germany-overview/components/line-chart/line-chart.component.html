@@ -1,5 +1,5 @@
 <div class="chart-container mx-2">
-	<div class="chart-responsive" [appResponsiveWidth]="viewWidth">
+	<div #lineChartContainer class="chart-responsive" [appResponsiveWidth]="viewWidth">
 		<ngx-charts-line-chart
 			*ngIf="results.length > 0"
 			[scheme]="scheme"
