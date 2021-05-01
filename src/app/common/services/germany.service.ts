@@ -43,7 +43,7 @@ export class GermanyService {
 						});
 					}
 					if (response.features && Array.isArray(response.features) && response.features.length > 0) {
-						response.features.forEach((feature: Feature) => {
+						response.features.reverse().forEach((feature: Feature) => {
 							mappedResponse.push({
 								cases: feature.attributes.cases,
 								deaths: feature.attributes.deaths,
@@ -97,7 +97,7 @@ export class GermanyService {
 						});
 					}
 					if (response.features && Array.isArray(response.features) && response.features.length > 0) {
-						response.features.forEach((feature: Feature) => {
+						response.features.reverse().forEach((feature: Feature) => {
 							mappedResponse.data.push({
 								cases: feature.attributes.cases,
 								deaths: feature.attributes.deaths,
