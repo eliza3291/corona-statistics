@@ -1,5 +1,6 @@
 import { LineChart } from '../models';
 
+/** Example of a linechart data for cases */
 export const LINECHART_MOCK: LineChart = LineChart.initializeLineChart([
 	{
 		name: 'cases',

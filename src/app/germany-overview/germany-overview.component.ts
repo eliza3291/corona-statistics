@@ -4,6 +4,7 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AlertService, GermanyService } from 'src/app/common/services';
 
+/** Component in charge of show the overview of the statistics in Germany or selected state */
 @Component({
 	templateUrl: './germany-overview.component.html',
 	styleUrls: ['./germany-overview.component.scss']
@@ -37,6 +38,7 @@ export class GermanyOverviewComponent implements OnInit {
 		this.timeseriesRecovered = new LineChart();
 	}
 
+	/** Get the data for the first time when component initialized */
 	ngOnInit(): void {
 		this.getData();
 	}

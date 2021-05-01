@@ -2,6 +2,10 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+/**
+ * Development environment.
+ * Definition of the require endpoints for the requests.
+ */
 export const environment = {
 	production: false,
 	arcgisCoronaGermany: {

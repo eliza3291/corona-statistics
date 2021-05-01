@@ -1,5 +1,5 @@
 /**
- * Get the date before N days.
+ * Get a date before N days.
  */
 export function getDateBefore(days: number): string {
 	const date = new Date();

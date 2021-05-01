@@ -7,10 +7,12 @@ import { getDateBefore } from '../utils';
 import { map } from 'rxjs/operators';
 import { Feature, QueryResponse } from '../models';
 
+/** Service in charge of request the data to the backend and map it into Timeseries Data */
 @Injectable()
 export class GermanyService {
 	constructor(private http: HttpClient) {}
 
+	/** Get timeseries data for Germany in a quantity of dates */
 	public getTimeseriesGermany(days: number): Observable<Timeseries> {
 		const startDate = getDateBefore(days);
 
@@ -64,6 +66,7 @@ export class GermanyService {
 			);
 	}
 
+	/** Get timeseries data for a specific State in a quantity of dates */
 	public getTimeseriesState(idState: number, days: number): Observable<TimeseriesState> {
 		const startDate = getDateBefore(days);
 

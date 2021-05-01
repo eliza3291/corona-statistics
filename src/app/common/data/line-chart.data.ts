@@ -1,10 +1,9 @@
 import { BreakpointItem } from '../models';
 
+/** Default item width to be used in responsive charts */
 export const DEFAULT_ITEM_WIDTH = 35;
 
-/**
- * List of avaibales breakpoint width and the number of items to show for each one.
- */
+/** List of availables breakpoint's width and the number of items to show for each one. */
 export const ITEMS_PER_BREAKPOINT: BreakpointItem[] = [
 	{
 		width: 576,

@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Data, NavigationEnd, Router } from '@angular/router';
 import { filter, map, mergeMap } from 'rxjs/operators';
 
+/** Show current location of a user inside the webapp */
 @Component({
 	selector: 'app-breadcrumb',
 	templateUrl: './breadcrumb.component.html',

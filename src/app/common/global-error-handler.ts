@@ -3,6 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AppError } from './models';
 import { AlertService } from './services';
 
+/** Handle all global errors */
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
 	constructor(private injector: Injector) {}
