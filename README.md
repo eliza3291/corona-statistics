@@ -1,4 +1,4 @@
-# :chart_with_downwards_trend: Corona Statistics Project
+# Corona Statistics Project
 
 Simple web application, completely responsive to show Corona statistics about Germany allowing the user to select between the next timeframes from now:
 
@@ -9,11 +9,11 @@ Simple web application, completely responsive to show Corona statistics about Ge
 
 Note: Timeframes can be changed inside `src/app/common/data/timeframe.data.ts`
 
-## :hammer_and_wrench: Angular
+## Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
 
-I like to work with a local version of Angular CLI, so I create some scripts to make easier running commands.
+Note: All scripts are running from a local npm package with `npx`
 
 ## Build
 
@@ -33,20 +33,20 @@ Run `npm run test` will check lint and prettier format before running all unit t
 
 Run `npm run build:production:analyze` will analize the bundle size of the project with webpack-bundle-analyzer.
 
-## :file_cabinet: Data Source
+## Data Source
 
 Robert Koch-Institut: [COVID-19](https://npgeo-corona-npgeo-de.hub.arcgis.com/)
 
-## :clap: Credits
+## Credits
 
-### :earth_africa: SVG Germany Map
+### SVG Germany Map
 
 Free SVG Maps from [AMCHARTS](https://www.amcharts.com/svg-maps/?map=germany)
 
-### :de: Icon (Germany map)
+### Icon (Germany map)
 
 Flag map of Germany from [Wikimedia Commons](https://en.wikipedia.org/wiki/File:Flag_map_of_Germany.svg)
 
-### :nail_care: Angular Template
+### Angular Template
 
 Xtreme Angular 11 Admin Lite from [WrapPixel](https://www.wrappixel.com/templates/xtreme-angular-lite/)
