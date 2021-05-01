@@ -1,0 +1,13 @@
+.chart-container {
+	max-width: 1100px;
+	overflow-x: auto;
+	.chart-responsive {
+		height: 300px;
+	}
+}
+
+/* Make lines in line chart thicker */
+::ng-deep ngx-charts-line-chart g.line-chart > g:last-of-type > g:nth-child(n) g.line-series > path {
+	stroke-width: 5;
+	stroke-linecap: round;
+}
