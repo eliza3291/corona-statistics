@@ -15,7 +15,7 @@ jobs:
       - name: Check ESLint
         run: npx ng lint
       - name: Check Prettier
-        run: npx prettier --config ./.prettierrc --list-different \"src/{app,environments}/**/*{.ts,.html,.scss}\""
+        run: npx prettier --config ./.prettierrc --list-different \"src/{app,environments}/**/*{.ts,.html,.scss}\"
       - name: Run Unit tests
         run: npx ng test --watch=false --browsers=ChromeHeadles
       - name: Run E2E tests
