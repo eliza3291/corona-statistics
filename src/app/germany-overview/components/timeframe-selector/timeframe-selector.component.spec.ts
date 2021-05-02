@@ -35,8 +35,7 @@ describe('TimeframeSelectorComponent', () => {
 	it('should set invisible in back button wehn selected index = 0', () => {
 		component.selectedTimeframeIndex = 0;
 		fixture.detectChanges();
-		const buttons = debugElement.queryAll(By.css('button'));
-		const backButton = buttons[0].nativeElement as HTMLElement;
+		const backButton = debugElement.query(By.css('#btnBack')).nativeElement as HTMLElement;
 
 		expect(backButton.classList).toContain('invisible');
 	});
@@ -44,8 +43,7 @@ describe('TimeframeSelectorComponent', () => {
 	it('should remove invisible in back button when selected index > 0', () => {
 		component.selectedTimeframeIndex = 1;
 		fixture.detectChanges();
-		const buttons = debugElement.queryAll(By.css('button'));
-		const backButton = buttons[0].nativeElement as HTMLElement;
+		const backButton = debugElement.query(By.css('#btnBack')).nativeElement as HTMLElement;
 
 		expect(backButton.classList).not.toContain('invisible');
 	});
@@ -53,8 +51,7 @@ describe('TimeframeSelectorComponent', () => {
 	it('should set invisible in next button when selected index == timeframeData length-1', () => {
 		component.selectedTimeframeIndex = component.timeframeData.length - 1;
 		fixture.detectChanges();
-		const buttons = debugElement.queryAll(By.css('button'));
-		const nextButton = buttons[1].nativeElement as HTMLElement;
+		const nextButton = debugElement.query(By.css('#btnNext')).nativeElement as HTMLElement;
 
 		expect(nextButton.classList).toContain('invisible');
 	});
@@ -62,10 +59,9 @@ describe('TimeframeSelectorComponent', () => {
 	it('should remove invisible in next button when selected index !== timeframeData length-1', () => {
 		component.selectedTimeframeIndex = 1;
 		fixture.detectChanges();
-		const buttons = debugElement.queryAll(By.css('button'));
-		const nextButton = buttons[1].nativeElement as HTMLElement;
+		const button = debugElement.query(By.css('#btnNext')).nativeElement as HTMLElement;
 
-		expect(nextButton.classList).not.toContain('invisible');
+		expect(button.classList).not.toContain('invisible');
 	});
 
 	it('should render name when selectedTimeframeIndex changes', () => {
@@ -78,8 +74,7 @@ describe('TimeframeSelectorComponent', () => {
 
 	it('click back button should set selectedTimeframeIndex - 1', () => {
 		component.selectedTimeframeIndex = 2;
-		const buttons = debugElement.queryAll(By.css('button'));
-		const backButton = buttons[0].nativeElement as HTMLElement;
+		const backButton = debugElement.query(By.css('#btnBack')).nativeElement as HTMLElement;
 		backButton.dispatchEvent(new MouseEvent('click'));
 		fixture.detectChanges();
 
@@ -88,8 +83,7 @@ describe('TimeframeSelectorComponent', () => {
 
 	it('click next button should set selectedTimeframeIndex + 1', () => {
 		component.selectedTimeframeIndex = 2;
-		const buttons = debugElement.queryAll(By.css('button'));
-		const nextButton = buttons[1].nativeElement as HTMLElement;
+		const nextButton = debugElement.query(By.css('#btnNext')).nativeElement as HTMLElement;
 		nextButton.dispatchEvent(new MouseEvent('click'));
 		fixture.detectChanges();
 
