@@ -9,7 +9,7 @@
     "test": "npx ng test --watch=false --browsers=ChromeHeadless",
     "test:watch": "npx ng test",
     "lint": "npx ng lint",
-    "e2e": "npx ng e2e",
+    "e2e": "npx ng e2e --webdriverUpdate=false",
     "analyze": "webpack-bundle-analyzer docs/stats.json",
     "gzipper": "npx gzipper compress --include scss,js,html,json,ico,svg ./docs",
     "brotli": "npx gzipper compress --brotli --include scss,js,html,json,ico,svg ./docs",
