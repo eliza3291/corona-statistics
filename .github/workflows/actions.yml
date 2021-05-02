@@ -12,11 +12,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
         run: sudo npm ci
-      - name: Run tests
-        run: npm test
-        env:
-          CI: true
+      - name: Check ESLint
+        run: npm run lint
+      - name: Check Prettier
+        run: npm run prettier:check
+      - name: Run Unit tests
+        run: npm run test:headless
+      - name: Run E2E tests
+        run: npm run e2e
       - name: Build
-        run: npm run build --if-present
-        env:
-          CI: true
+        run: npm run build
