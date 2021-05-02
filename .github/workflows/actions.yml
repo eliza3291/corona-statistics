@@ -14,6 +14,8 @@ jobs:
         run: sudo npm ci
       - name: Check ESLint
         run: ng lint
+        env:
+          CI: true
       - name: Check Prettier
         run: prettier --config ./.prettierrc --list-different \"src/{app,environments}/**/*{.ts,.html,.scss}\""
       - name: Run Unit tests
