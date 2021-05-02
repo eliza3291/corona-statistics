@@ -13,14 +13,12 @@ jobs:
       - name: Install dependencies
         run: sudo npm ci
       - name: Check ESLint
-        run: ng lint
-        env:
-          CI: true
+        run: npx ng lint
       - name: Check Prettier
-        run: prettier --config ./.prettierrc --list-different \"src/{app,environments}/**/*{.ts,.html,.scss}\""
+        run: npx prettier --config ./.prettierrc --list-different \"src/{app,environments}/**/*{.ts,.html,.scss}\""
       - name: Run Unit tests
-        run: ng test --watch=false --browsers=ChromeHeadles
+        run: npx ng test --watch=false --browsers=ChromeHeadles
       - name: Run E2E tests
-        run: ng e2e
+        run: npx ng e2e
       - name: Build
-        run: ng build
+        run: npx ng build
