@@ -57,7 +57,7 @@ export class LineChartComponent {
 		const mouseleave = new MouseEvent('mouseleave', { bubbles: true, cancelable: true });
 		const containerElement = this.lineChartContainer?.nativeElement;
 		const tooltipAreaSerie = containerElement?.querySelector('.tooltip-area') as HTMLElement;
-		const tooltipAreaCircle = containerElement?.querySelector('circle');
+		const tooltipAreaCircle = containerElement?.querySelector('circle') as SVGCircleElement;
 		tooltipAreaSerie?.dispatchEvent(mouseleave);
 		tooltipAreaCircle?.dispatchEvent(mouseleave);
 	}
@@ -67,21 +67,20 @@ export class LineChartComponent {
 	 */
 	setViewWidth(): void {
 		const innerWidth = window.innerWidth;
-		const maxLength = this.results.getMaxLength() - 1;
+		const maxLength = this.results.maxLength - 1;
 
-		ITEMS_PER_BREAKPOINT.some((element) => {
-			if (innerWidth < element.width) {
-				this.viewWidth = maxLength > element.nrItems ? DEFAULT_ITEM_WIDTH * maxLength : 0;
-				return true;
-			}
+		const breakpoint = ITEMS_PER_BREAKPOINT.find((element) => innerWidth < element.width);
+
+		if (breakpoint) {
+			this.viewWidth = maxLength > breakpoint.nrItems ? DEFAULT_ITEM_WIDTH * maxLength : 0;
+		} else {
 			this.viewWidth = 0;
-			return false;
-		});
+		}
 	}
 
 	/**
 	 * The unit of the values inside the chart is persons, so 0.8 persons is not an accurate value.
-	 * Acurrate value should be: 0 persons, 1 person, or N persons.
+	 * Accurate value should be: 0 persons, 1 person, or N persons.
 	 */
 	yAxisTickFormatting(val: number): string {
 		if (val % 1 === 0) {
