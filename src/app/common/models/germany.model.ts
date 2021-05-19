@@ -21,17 +21,17 @@ export class Timeseries extends Array<TimeseriesData> {
 	}
 
 	/** Summary of total cases */
-	getTotalCases(): number {
+	get totalCases(): number {
 		return this.reduce((a, b) => a + (b.cases || 0), 0);
 	}
 
 	/** Summary of total deaths */
-	getTotalDeaths(): number {
+	get totalDeaths(): number {
 		return this.reduce((a, b) => a + (b.deaths || 0), 0);
 	}
 
 	/** Summary of total recovered */
-	getTotalRecovered(): number {
+	get totalRecovered(): number {
 		return this.reduce((a, b) => a + (b.recovered || 0), 0);
 	}
 
