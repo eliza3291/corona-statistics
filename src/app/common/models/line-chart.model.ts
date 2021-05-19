@@ -29,7 +29,7 @@ export class LineChart extends Array<LineChartSeries> {
 	}
 
 	/** Get the maximum length of timeseries */
-	getMaxLength(): number {
+	get maxLength(): number {
 		let max = 0;
 		this.forEach((serie) => {
 			if (serie.series.length > max) {
