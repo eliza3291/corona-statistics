@@ -67,7 +67,7 @@ export class LineChartComponent {
 	 */
 	setViewWidth(): void {
 		const innerWidth = window.innerWidth;
-		const maxLength = this.results.getMaxLength() - 1;
+		const maxLength = this.results.maxLength - 1;
 
 		const breakpoint = ITEMS_PER_BREAKPOINT.find((element) => innerWidth < element.width);
 
