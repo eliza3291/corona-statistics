@@ -69,14 +69,13 @@ export class LineChartComponent {
 		const innerWidth = window.innerWidth;
 		const maxLength = this.results.getMaxLength() - 1;
 
-		ITEMS_PER_BREAKPOINT.some((element) => {
-			if (innerWidth < element.width) {
-				this.viewWidth = maxLength > element.nrItems ? DEFAULT_ITEM_WIDTH * maxLength : 0;
-				return true;
-			}
+		const breakpoint = ITEMS_PER_BREAKPOINT.find((element) => innerWidth < element.width);
+
+		if (breakpoint) {
+			this.viewWidth = maxLength > breakpoint.nrItems ? DEFAULT_ITEM_WIDTH * maxLength : 0;
+		} else {
 			this.viewWidth = 0;
-			return false;
-		});
+		}
 	}
 
 	/**
