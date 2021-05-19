@@ -81,7 +81,7 @@ export class LineChartComponent {
 
 	/**
 	 * The unit of the values inside the chart is persons, so 0.8 persons is not an accurate value.
-	 * Acurrate value should be: 0 persons, 1 person, or N persons.
+	 * Accurate value should be: 0 persons, 1 person, or N persons.
 	 */
 	yAxisTickFormatting(val: number): string {
 		if (val % 1 === 0) {
