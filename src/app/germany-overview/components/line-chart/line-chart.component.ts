@@ -57,7 +57,7 @@ export class LineChartComponent {
 		const mouseleave = new MouseEvent('mouseleave', { bubbles: true, cancelable: true });
 		const containerElement = this.lineChartContainer?.nativeElement;
 		const tooltipAreaSerie = containerElement?.querySelector('.tooltip-area') as HTMLElement;
-		const tooltipAreaCircle = containerElement?.querySelector('circle');
+		const tooltipAreaCircle = containerElement?.querySelector('circle') as SVGCircleElement;
 		tooltipAreaSerie?.dispatchEvent(mouseleave);
 		tooltipAreaCircle?.dispatchEvent(mouseleave);
 	}
